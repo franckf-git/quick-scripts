@@ -20,15 +20,16 @@ for j in $(ls ~/Downloads/tmp | grep 'jpg\|png\|gif')
         do
             cd ~/Downloads/tmp
             prename -v 's/^/'$i'\_/' $j
+            prename 's/.zip//' *
         done
         cd ~/Downloads/tmp
         mv *.* ~/Downloads/the_scans
         
     done
 
-cd ~/Downloads/tmp
-prename 's/.zip//' *
 rm -R ~/Downloads/tmp
+# rotate for read on the side
+#convert source.png -rotate -90 destination.png
 
 echo "############################"
 echo "our scans are ready. Enjoy !"
