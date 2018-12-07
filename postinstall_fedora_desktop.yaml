@@ -1,0 +1,186 @@
+---
+- hosts: desktops
+  remote_user: root
+# TEST IN PROGRESS
+  vars:
+      user: user
+
+  tasks:
+    - name: find the no root user and save it
+      shell: cat /etc/passwd | grep home | cut -d ":" -f 1
+      register: myuser
+
+################################################
+#Security
+################################################
+
+    - name: Set the firewall to drop all input
+      firewalld:
+        zone: drop
+        permanent: true
+        state: enabled
+
+# Configuration of mount point for SSD
+    - lineinfile:
+        path: /etc/fstab
+        regexp: 'defaults'
+        line: 'defaults,discard'
+
+    - lineinfile:
+        path: /etc/lvm/lvm.conf
+        regexp: '^issue_discards = 0'
+        line: 'issue_discards = 1'
+
+    - lineinfile:
+        path: /sys/block/sda/queue/scheduler
+        line: 'noop'
+        create: yes
+
+    - name: Hide the grub menu
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_TIMEOUT=5'
+        line: 'GRUB_TIMEOUT=0'
+
+    - shell: grub2-mkconfig -o /boot/grub2/grub.cfg
+
+    - name: Add an autologin group for lightdm
+      group:
+        name: autologin
+        gid: 1001
+        state: present
+
+    - name: Adding user to the autologin group 
+      user: name={{ myuser }}
+            group={{ myuser }}
+            groups=autologin
+            append=yes
+
+    - name: If you use an encrypt HDD, you can autologin to lightdm
+      shell: |
+        echo "
+             [Seat:*]
+             greeter-hide-users=true
+             user-session=i3
+             greeter-setup-script=/usr/bin/numlockx on
+             autologin-user={{ myuser }}" >> /etc/lightdm/lightdm.conf
+
+################################################
+#Install and upgrade
+################################################
+
+    - name: Set dnf deltarpm (for slow connections) and two kernel
+      shell: |
+        echo "
+        [main]
+        gpgcheck=1
+        installonly_limit=2
+        clean_requirements_on_remove=true
+        fastestmirror=true
+        deltarpm=1" > /etc/dnf/dnf.conf
+
+    - name: Install fusion repository free
+      dnf:
+        name: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ hostvars[inventory_hostname].ansible_distribution_major_version }}.noarch.rpm
+        state: present
+
+    - name: Add fusion repository free key
+      rpm_key: http://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-{{ hostvars[inventory_hostname].ansible_distribution_major_version }}
+      #    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+        state: present
+
+    - name: Install fusion repository non free
+      dnf:
+        name: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ hostvars[inventory_hostname].ansible_distribution_major_version }}.noarch.rpm
+        state: present
+
+    - name: Add fusion repository non free key
+      rpm_key: http://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ hostvars[inventory_hostname].ansible_distribution_major_version }}
+        state: present
+
+    - name: Add sublime text repository
+      yum_repository:
+        name: sublime-text
+        baseurl: https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo    
+
+    - name: Add sublime text repository key
+      rpm_key: https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+        state: present
+
+    - name: Upgrade all packages
+      dnf:
+        name: "*"
+        state: latest
+        update_cache: yes
+
+    - name: Install the selection of packages
+      dnf:
+        name: {{ item }}
+        state: latest
+        update_cache: yes
+      with_items:
+        - bleachbit
+        - breeze-cursor-theme
+        - chkrootkit
+        - chromium
+        - chromium-libs-media-freeworld
+        - conky
+        - encfs
+        - evince
+        - feh
+        - ffmpeg
+        - fontawesome-fonts
+        - gedit
+        - gedit-plugins
+        - git
+        - htop
+        - i3
+        - i3lock
+        - inxi
+        - keepassxc
+        - lxappearance
+        - lynis
+        - mpv
+        - numlockx
+        - pop-icon-theme
+        - ristretto
+        - rkhunter
+        - scrot
+        - sublime-text
+        - unclutter
+        - xarchiver
+        - xbacklight
+        - youtube-dl
+      when: ansible_pkg_mgr == 'dnf'
+
+    - name: Autoremove unneeded packages installed as dependencies
+      dnf:
+        autoremove: yes
+
+################################################
+#Users
+################################################
+
+    - name: Creates my own directories
+      file:
+        path: /home/{{ myuser }}/{{ item }}
+        state: directory
+        owner: {{ myuser }}
+        group: {{ myuser }}
+        mode: 0755
+        recurse: yes
+      with_items:
+        - Files
+        - Downloads
+        - Transferts
+        - Medias
+        - Unclear
+
+    - name: Add a crontab to check for security every sunday morning
+      cron:
+        name: check security
+        weekday: 0
+        minute: 30
+        hour: 6
+        user: root
+        job: "/home/{{ myuser }}/.sec/sec.sh"
