@@ -1,7 +1,7 @@
 #! /bin/bash
 #
 # postintall script for redhat system with flatpak
-# wget https://framagit.org/efydd/config/raw/master/.postinstall/redhat_system_postintall.sh
+# wget https://framagit.org/efydd/quick_scripts/raw/master/postinstall_redhat_system.sh
 
 ######################### VARIABLES
 
@@ -68,7 +68,7 @@ echo
 case $1 in
 "--centos" )
     echo -e "        ${GREEN} # Add the epel repositories (must have for a desktop application) ${COLOR_OFF}"
-    yum -y install epel-release
+    yum --assumeyes install epel-release
     #yum-config-manager --enable extras #if yum-utils
     yum check-update
     echo -e "[${GREEN} DONE ${COLOR_OFF}]"
@@ -76,8 +76,8 @@ case $1 in
 ;;
 "--full" )
     echo -e "        ${GREEN} # Add the fusion repositories (more package and deal with some codecs) ${COLOR_OFF}"
-    dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-    dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    dnf install --assumeyes https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+    dnf install --assumeyes https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     rpm --import "http://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-$(rpm -E %fedora)"
     rpm --import "http://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-$(rpm -E %fedora)"
     dnf check-update
@@ -98,11 +98,11 @@ esac
 echo -e "        ${GREEN} # Install the i3 windows manager ${COLOR_OFF}"
 
 if [ "$1" = "--centos" ] ; then
-    yum -y groupinstall "X Window System"
-    yum -y install lightdm xorg-x11-xinit-session dejavu-sans-mono-fonts i3 i3status
+    yum --assumeyes groupinstall "X Window System"
+    yum --assumeyes install lightdm xorg-x11-xinit-session dejavu-sans-mono-fonts i3 i3status
 else
-    dnf -y groupinstall base-x
-    dnf -y install lightdm xorg-x11-xinit-session dejavu-sans-mono-fonts i3 i3status initial-setup-gui xvattr xorg-x11-drivers
+    dnf --assumeyes groupinstall base-x
+    dnf --assumeyes install lightdm xorg-x11-xinit-session dejavu-sans-mono-fonts i3 i3status initial-setup-gui xvattr xorg-x11-drivers
 fi
 systemctl set-default graphical.target
 systemctl enable lightdm
@@ -217,9 +217,9 @@ youtube-dl
 wget"
 ;;
 esac
-yum install -y --skip-broken $myprogram
-yum upgrade -y
-yum clean packages -y
+yum install --assumeyes --skip-broken $myprogram
+yum upgrade --assumeyes
+yum clean packages --assumeyes
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
@@ -285,16 +285,16 @@ fi
 
 # config for SSD
 echo -e "        ${GREEN} # Configuration of mount point for SSD (better performance) ${COLOR_OFF}"
-sed -i 's/defaults/defaults,discard/g' /etc/fstab
-sed -i 's/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
+sed --in-place='s/defaults/defaults,discard/g' /etc/fstab
+sed --in-place='s/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
 echo noop | tee /sys/block/sda/queue/scheduler
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
 # autologin (only for encrypt HDD)
 echo -e "        ${GREEN} # If you use an encrypt HDD, you can autologin to lightdm ${COLOR_OFF}"
-groupadd -r autologin -g 1001
-gpasswd -a $MYUSER autologin
+groupadd --system autologin --gid 1001
+gpasswd --add $MYUSER autologin
 echo "
 [Seat:*]
 greeter-hide-users=true
@@ -306,9 +306,9 @@ echo
 
 # GRUB
 echo -e "        ${GREEN} # Hide the grub menu (quick start and better security) ${COLOR_OFF}"
-sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
-grub2-mkconfig -o /boot/grub2/grub.cfg
-grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+sed --in-place='s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
+grub2-mkconfig --output=/boot/grub2/grub.cfg
+grub2-mkconfig --output=/boot/efi/EFI/fedora/grub.cfg
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
@@ -337,18 +337,18 @@ Transferts
 Medias
 Unclear"
 do
-  sudo -u $MYUSER mkdir /home/$MYUSER/$myfolder
+  sudo --user=$MYUSER mkdir /home/$MYUSER/$myfolder
 done
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
 # set my own config dot files
 echo -e "        ${GREEN} # Download my config files from gitlab and put them on ${COLOR_OFF}"
-sudo -u $MYUSER ranger --copy-config=all
+sudo --user=$MYUSER ranger --copy-config=all
 cd /home/$MYUSER/Downloads
-sudo -u $MYUSER wget https://framagit.org/efydd/config/-/archive/master/config-master.tar
-sudo -u $MYUSER tar xvf config-master.tar
-sudo -u $MYUSER cd config-master
+sudo --user=$MYUSER wget https://framagit.org/efydd/config/-/archive/master/config-master.tar
+sudo --user=$MYUSER tar xvf config-master.tar
+sudo --user=$MYUSER cd config-master
 for dotfile in "
 .bash.command-not-found
 .bash_profile
@@ -369,9 +369,9 @@ for dotfile in "
 .vimrc
 .Xdefaults"
 do
-sudo -u $MYUSER mv $dotfile /home/$MYUSER/
+sudo --user=$MYUSER mv $dotfile /home/$MYUSER/
 done
-sudo -u $MYUSER mv .config/* /home/$MYUSER/.config/
+sudo --user=$MYUSER mv .config/* /home/$MYUSER/.config/
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
