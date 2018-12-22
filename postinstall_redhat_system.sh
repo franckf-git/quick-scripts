@@ -2,6 +2,9 @@
 #
 # postintall script for redhat system with flatpak
 # wget https://framagit.org/efydd/quick_scripts/raw/master/postinstall_redhat_system.sh
+# install centos or fedora from minimal cd
+# for centos use source mirror.CentOS.org/CentOS/7.5.1804/os/x86_64/
+# and dont check use "This URL refers to a mirror list"
 
 ######################### VARIABLES
 
