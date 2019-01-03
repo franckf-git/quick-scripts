@@ -166,6 +166,7 @@ pulseaudio
 pulseaudio-utils
 ranger
 ristretto
+rofi
 rsync
 rxvt-unicode
 tar
@@ -205,6 +206,7 @@ pulseaudio
 pulseaudio-utils
 ranger
 ristretto
+rofi
 rkhunter
 rsync
 rxvt-unicode
