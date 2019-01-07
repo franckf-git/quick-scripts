@@ -122,6 +122,7 @@ case $1 in
 myprogram="
 bash-completion
 bleachbit
+bzip2
 chromium
 conky
 encfs
@@ -154,6 +155,7 @@ wget"
 myprogram="
 bash-completion
 bleachbit
+bzip2
 encfs
 feh
 firefox
@@ -181,6 +183,7 @@ wget"
 myprogram="
 bash-completion
 bleachbit
+bzip2
 breeze-cursor-theme
 chkrootkit
 chromium
