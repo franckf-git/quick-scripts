@@ -192,6 +192,20 @@ echo -e "        ${RED} # No GRUB config, problem to fix ${COLOR_OFF}"
 
 ######################### CONFIG
 
+# config for touchpad
+echo -e "        ${GREEN} # If you are on a laptop uncomment this part for touchpad ${COLOR_OFF}"
+# apt install libnotify-bin
+# echo "
+# Section "InputClass"
+#         Identifier "libinput touchpad catchall"
+#         MatchIsTouchpad "on"
+#         MatchDevicePath "/dev/input/event*"
+#         Driver "libinput"
+#         Option "Tapping" "on"
+# EndSection" >> /etc/X11/xorg.conf.d/40-libinput.conf
+# echo -e "[${GREEN} DONE ${COLOR_OFF}]"
+echo
+
 # create my own folders
 echo -e "        ${GREEN} # Delete the old folder structure in home and create a better one (mine) ${COLOR_OFF}"
 cd /home/$MYUSER/
