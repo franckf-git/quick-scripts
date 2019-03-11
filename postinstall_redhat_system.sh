@@ -239,6 +239,19 @@ if [ "$1" = "--centos" ] ; then
     tar xvf ranger-stable.tar.gz
     cd ranger-*
     make install
+    cd /home/$MYUSER
+    rm -R ranger-*
+    echo -e "[${GREEN} DONE ${COLOR_OFF}]"
+    echo
+fi
+
+# centos cleaning services
+if [ "$1" = "--centos" ] ; then
+    echo -e "        ${GREEN} # Clean useless services ${COLOR_OFF}"
+    systemctl disable spice-vdagentd
+    systemctl disable rtkit-daemon
+    systemctl disable postfix
+    yum remove spice-vdagent
     echo -e "[${GREEN} DONE ${COLOR_OFF}]"
     echo
 fi
@@ -386,6 +399,13 @@ echo
 # setup crontab
 echo -e "        ${GREEN} # Add a crontab to check for security every sunday morning ${COLOR_OFF}"
 crontab < <(crontab -l ; echo "00 07 * * 0 /home/$MYUSER/.sec/sec.sh")
+echo -e "[${GREEN} DONE ${COLOR_OFF}]"
+echo
+
+# setup audio
+echo -e "        ${GREEN} # Configure PulseAudio with starting deamon ${COLOR_OFF}"
+sudo --user=$MYUSER pulseaudio --kill
+sudo --user=$MYUSER pulseaudio -D
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
