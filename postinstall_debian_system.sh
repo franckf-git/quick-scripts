@@ -108,6 +108,7 @@ dunst
 encfs
 feh
 firefox-esr
+firmware-iwlwifi
 flatpak
 fonts-font-awesome
 git
@@ -180,25 +181,14 @@ autologin-user=$MYUSER" >> /etc/lightdm/lightdm.conf
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
-# GRUB
-echo -e "        ${GREEN} # Hide the grub menu (quick start and better security) ${COLOR_OFF}"
-sed --in-place='s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/g' /etc/default/grub
-grub2-mkconfig --output=/boot/grub2/grub.cfg
-grub2-mkconfig --output=/boot/efi/EFI/fedora/grub.cfg
-echo -e "[${GREEN} DONE ${COLOR_OFF}]"
-echo
-
-# rules for dnf on fedora
-if [ "$1" != "--centos" ] ; then
-    echo -e "        ${GREEN} # Set dnf deltarpm (for slow connections) and two kernel to keep ${COLOR_OFF}"
-    echo "[main]
-gpgcheck=1
-installonly_limit=3
-clean_requirements_on_remove=true
-fastestmirror=true" > /etc/dnf/dnf.conf
-    echo -e "[${GREEN} DONE ${COLOR_OFF}]"
-    echo
-fi
+echo -e "        ${RED} # No GRUB config, problem to fix ${COLOR_OFF}"
+# # GRUB
+# echo -e "        ${GREEN} # Hide the grub menu (quick start and better security) ${COLOR_OFF}"
+# sed --in-place='s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/g' /etc/default/grub
+# grub-mkconfig --output=/boot/grub2/grub.cfg
+# grub-mkconfig --output=/boot/efi/EFI/fedora/grub.cfg
+# echo -e "[${GREEN} DONE ${COLOR_OFF}]"
+# echo
 
 ######################### CONFIG
 
@@ -235,8 +225,8 @@ echo
 
 # setup audio
 echo -e "        ${GREEN} # Configure PulseAudio with starting deamon ${COLOR_OFF}"
-pulseaudio --kill
-pulseaudio -D
+sudo --user=$MYUSER pulseaudio --kill
+sudo --user=$MYUSER pulseaudio -D
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
