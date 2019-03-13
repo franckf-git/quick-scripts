@@ -201,6 +201,7 @@ iwl*-firmware
 keepassxc
 lynis
 mpv
+mupdf
 network-manager-applet
 numlockx
 pop-icon-theme
@@ -274,7 +275,6 @@ fr.handbrake.ghb
 io.atom.Atom
 org.gimp.GIMP
 org.gnome.Calculator
-org.gnome.Evince
 org.gnome.PasswordSafe
 org.libreoffice.LibreOffice"
 ;;
