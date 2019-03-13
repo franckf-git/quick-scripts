@@ -98,6 +98,7 @@ echo
 echo -e "        ${GREEN} # Install only the packages you need ${COLOR_OFF}"
 myprogram="
 bash-completion
+bc
 bleachbit
 bzip2
 chkrootkit
@@ -117,9 +118,11 @@ i3
 i3lock
 i3status
 lightdm
+less
 lynis
 man
 mpv
+mupdf
 neovim
 network-manager
 numlockx
