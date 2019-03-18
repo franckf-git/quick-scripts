@@ -184,14 +184,13 @@ autologin-user=$MYUSER" >> /etc/lightdm/lightdm.conf
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
-echo -e "        ${RED} # No GRUB config, problem to fix ${COLOR_OFF}"
-# # GRUB
-# echo -e "        ${GREEN} # Hide the grub menu (quick start and better security) ${COLOR_OFF}"
-# sed --in-place='s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/g' /etc/default/grub
-# grub-mkconfig --output=/boot/grub2/grub.cfg
-# grub-mkconfig --output=/boot/efi/EFI/fedora/grub.cfg
-# echo -e "[${GREEN} DONE ${COLOR_OFF}]"
-# echo
+# GRUB
+echo -e "        ${GREEN} # Hide the grub menu (quick start and better security) ${COLOR_OFF}"
+sed --in-place='s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/g' /etc/default/grub
+rm /usr/share/images/desktop-base/desktop-grub.png
+update-grub
+echo -e "[${GREEN} DONE ${COLOR_OFF}]"
+echo
 
 ######################### CONFIG
 
