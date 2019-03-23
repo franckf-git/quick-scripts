@@ -141,7 +141,7 @@ pulseaudio-utils
 ristretto
 rsync
 rkhunter
-rxvt-unicode
+rxvt-unicode-256color
 tar
 udisks2
 unzip
@@ -170,7 +170,7 @@ ranger
 ristretto
 rofi
 rsync
-rxvt-unicode
+rxvt-unicode-256color
 tar
 udisks2
 unclutter
@@ -213,7 +213,7 @@ ristretto
 rofi
 rkhunter
 rsync
-rxvt-unicode
+rxvt-unicode-256color
 scrot
 tar
 udisks2
