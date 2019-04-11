@@ -181,55 +181,51 @@ wget"
 ;;
 "--full")
 myprogram="
-bash-completion
-bleachbit
-breeze-cursor-theme
-bzip2
-chkrootkit
-chromium
-chromium-libs-media-freeworld
-conky
-dunst
-encfs
-feh
-firefox
-flatpak
-fontawesome-fonts
-git
-htop
-i3lock
-iwl*-firmware
-keepassxc
-lynis
-mpv
-mupdf
-neovim
-network-manager-applet
-numlockx
-pop-icon-theme
-powerline
-powerline-fonts
-prename
-pulseaudio
-pulseaudio-utils
-ranger
-ristretto
-rkhunter
-rofi
-rsync
-rxvt-unicode-256color
-scrot
-tar
-udisks2
-unclutter
-unzip
-vim-powerline
-xfce4-power-manager
-xfce4-terminal
-youtube-dl
-wget
-zsh
-zsh-syntax-highlighting"
+rofi                            # desktop-applications-launch
+fontawesome-fonts               # desktop-icons
+i3lock                          # desktop-locker
+conky                           # desktop-display-info
+dunst                           # desktop-display-notify
+scrot                           # desktop-screenshot
+udisks2                         # desktop-usb-mount
+unclutter                       # desktop-mouse
+encfs                           # security-folder
+chkrootkit                      # security-rootkit
+lynis                           # security-analyser
+rkhunter                        # security-rootkit
+bleachbit                       # system-clean
+flatpak                         # system-applications
+git                             # system-versionning
+htop                            # system-monitor
+xfce4-power-manager             # system-configuration-power
+network-manager-applet          # system-configuration-network
+numlockx                        # system-numpad
+pulseaudio                      # system-audio
+pulseaudio-utils                # system-audio-configuration
+rsync                           # system-copy
+surf                            # web-browser-light
+chromium                        # web-browser
+firefox                         # web-browser-secure
+feh                             # image-viewer-light
+ristretto                       # image-viewer
+iwl*-firmware                   # hardware-wifi-driver
+mpv                             # video-audio-player
+mupdf                           # pdf-viewer-light
+neovim                          # editor-light
+ranger                          # file-explorer-light
+rxvt-unicode                    # terminal-light
+bash-completion                 # terminal-help
+prename                         # terminal-utilities
+tar                             # terminal-utilities
+bzip2                           # terminal-utilities
+unzip                           # terminal-utilities
+youtube-dl                      # terminal-utilities
+wget                            # terminal-utilities
+xfce4-terminal                  # terminal
+powerline-fonts                 # terminal-font
+zsh                             # terminal-display
+zsh-syntax-highlighting         # terminal-help
+"
 ;;
 esac
 yum install --assumeyes --skip-broken $myprogram
@@ -276,13 +272,13 @@ net.baseart.Glide"
 ;;
 "--full")
 myflatpak="
-com.sublimetext.three
-fr.handbrake.ghb
-io.atom.Atom
-org.gimp.GIMP
-org.gnome.Calculator
-org.gnome.PasswordSafe
-org.libreoffice.LibreOffice"
+com.sublimetext.three             # editor
+org.gnome.Calculator              # desktop-caculator
+org.gnome.Evince                  # pdf-viewer
+org.gnome.PasswordSafe            # security-passwords
+fr.handbrake.ghb                  # encode
+flathub com.makemkv.MakeMKV       # encode
+"
 ;;
 esac
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -294,13 +290,16 @@ echo
 if [ "$2" = "--work" ] ; then
     echo -e "        ${GREEN} # Install only the flatpak for the work machine ${COLOR_OFF}"
     for flatpakwork in "
-    com.jgraph.drawio.desktop
-    org.fedoraproject.MediaWriter
-    org.gajim.Gajim
-    org.gnome.Evolution
-    org.gnome.Geary
-    org.keepassxc.KeePassXC
-    org.nextcloud.Nextcloud"
+    com.mattermost.Desktop            # communications
+    org.audacityteam.Audacity         # audio-editor
+    com.jgraph.drawio.desktop         # schematics-editor
+    org.gimp.GIMP                     # image-editor
+    org.libreoffice.LibreOffice       # editor-full
+    org.filezillaproject.Filezilla    # file-transfert
+    org.keepassxc.KeePassXC           # security-passwords
+    org.nextcloud.Nextcloud           # desktop-sync-client
+    org.fedoraproject.MediaWriter     # system-iso-writer
+    "
     do
       flatpak install --assumeyes flathub $flatpakwork
     done
