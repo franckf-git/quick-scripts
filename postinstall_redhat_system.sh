@@ -224,7 +224,6 @@ wget                            # terminal-utilities
 xfce4-terminal                  # terminal
 powerline-fonts                 # terminal-font
 zsh                             # terminal-display
-zsh-syntax-highlighting         # terminal-help
 "
 ;;
 esac
@@ -370,34 +369,13 @@ echo
 
 # set my own config dot files
 echo -e "        ${GREEN} # Download my config files from gitlab and put them on ${COLOR_OFF}"
+sudo --user=$MYUSER sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sudo --user=$MYUSER git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+sudo --user=$MYUSER git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 sudo --user=$MYUSER ranger --copy-config=all
 cd /home/$MYUSER/Downloads
 sudo --user=$MYUSER wget https://framagit.org/efydd/config/-/archive/master/config-master.tar
 sudo --user=$MYUSER tar xvf config-master.tar
-sudo --user=$MYUSER cd config-master
-for dotfile in "
-.bash.command-not-found
-.bash_profile
-.bashrc
-.cheat/
-.conky/
-.gitconfig
-.mpv/
-.nano/
-.nanorc
-.nav/
-.postinstall/
-.programs/
-.rtfm/
-.sec/
-.themes/
-.tldr/
-.vimrc
-.Xdefaults"
-do
-sudo --user=$MYUSER mv $dotfile /home/$MYUSER/
-done
-sudo --user=$MYUSER mv .config/* /home/$MYUSER/.config/
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
