@@ -120,64 +120,84 @@ echo -e "        ${GREEN} # Install only the packages you need ${COLOR_OFF}"
 case $1 in
 "--centos" )
 myprogram="
-bash-completion
-bleachbit
-bzip2
-chromium
-conky
-encfs
-firefox
-flatpak
-fontawesome-fonts
-git
-htop
-i3lock
-iwl*-firmware
-lynis
-network-manager-applet
-prename
-pulseaudio
-pulseaudio-utils
-ristretto
-rsync
-rkhunter
-rxvt-unicode-256color
-tar
-udisks2
-unzip
-neovim
-xfce4-power-manager
-dunst
-youtube-dl
-wget"
+rofi                            # desktop-applications-launch
+fontawesome-fonts               # desktop-icons
+i3lock                          # desktop-locker
+conky                           # desktop-display-info
+dunst                           # desktop-display-notify
+scrot                           # desktop-screenshot
+udisks2                         # desktop-usb-mount
+unclutter                       # desktop-mouse
+encfs                           # security-folder
+chkrootkit                      # security-rootkit
+lynis                           # security-analyser
+rkhunter                        # security-rootkit
+bleachbit                       # system-clean
+flatpak                         # system-applications
+git                             # system-versionning
+htop                            # system-monitor
+xfce4-power-manager             # system-configuration-power
+network-manager-applet          # system-configuration-network
+numlockx                        # system-numpad
+pulseaudio                      # system-audio
+pulseaudio-utils                # system-audio-configuration
+rsync                           # system-copy
+surf                            # web-browser-light
+chromium                        # web-browser
+firefox                         # web-browser-secure
+feh                             # image-viewer-light
+ristretto                       # image-viewer
+iwl*-firmware                   # hardware-wifi-driver
+mpv                             # video-audio-player
+mupdf                           # pdf-viewer-light
+neovim                          # editor-light
+ranger                          # file-explorer-light
+rxvt-unicode                    # terminal-light
+bash-completion                 # terminal-help
+prename                         # terminal-utilities
+tar                             # terminal-utilities
+bzip2                           # terminal-utilities
+unzip                           # terminal-utilities
+youtube-dl                      # terminal-utilities
+wget                            # terminal-utilities
+xfce4-terminal                  # terminal
+powerline-fonts                 # terminal-font
+zsh                             # terminal-display
+"
 ;;
 "--minimal" )
 myprogram="
-bash-completion
-bleachbit
-bzip2
-encfs
-feh
-firefox
-flatpak
-fontawesome-fonts
-iwl*-firmware
-network-manager-applet
-prename
-pulseaudio
-pulseaudio-utils
-ranger
-ristretto
-rofi
-rsync
-rxvt-unicode-256color
-tar
-udisks2
-unclutter
-unzip
-neovim
-xfce4-power-manager
-wget"
+rofi                            # desktop-applications-launch
+fontawesome-fonts               # desktop-icons
+dunst                           # desktop-display-notify
+scrot                           # desktop-screenshot
+udisks2                         # desktop-usb-mount
+unclutter                       # desktop-mouse
+bleachbit                       # system-clean
+flatpak                         # system-applications
+htop                            # system-monitor
+xfce4-power-manager             # system-configuration-power
+network-manager-applet          # system-configuration-network
+pulseaudio                      # system-audio
+pulseaudio-utils                # system-audio-configuration
+rsync                           # system-copy
+surf                            # web-browser-light
+firefox                         # web-browser-secure
+feh                             # image-viewer-light
+ristretto                       # image-viewer
+iwl*-firmware                   # hardware-wifi-driver
+mupdf                           # pdf-viewer-light
+neovim                          # editor-light
+ranger                          # file-explorer-light
+rxvt-unicode                    # terminal-light
+bash-completion                 # terminal-help
+prename                         # terminal-utilities
+tar                             # terminal-utilities
+bzip2                           # terminal-utilities
+unzip                           # terminal-utilities
+youtube-dl                      # terminal-utilities
+wget                            # terminal-utilities
+"
 ;;
 "--full")
 myprogram="
@@ -263,11 +283,11 @@ echo -e "        ${GREEN} # Install only the flatpak you need ${COLOR_OFF}"
 case $1 in
 "--centos" )
 myflatpak="
-io.github.GnomeMpv"
+"
 ;;
 "--minimal")
 myflatpak="
-net.baseart.Glide"
+"
 ;;
 "--full")
 myflatpak="
@@ -369,9 +389,11 @@ echo
 
 # set my own config dot files
 echo -e "        ${GREEN} # Download my config files from gitlab and put them on ${COLOR_OFF}"
+if [ "$1" != "--minimal" ] ; then
 sudo --user=$MYUSER sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sudo --user=$MYUSER git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 sudo --user=$MYUSER git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+fi
 sudo --user=$MYUSER ranger --copy-config=all
 cd /home/$MYUSER/Downloads
 sudo --user=$MYUSER wget https://framagit.org/efydd/config/-/archive/master/config-master.tar
