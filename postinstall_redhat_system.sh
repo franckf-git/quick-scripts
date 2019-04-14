@@ -145,6 +145,7 @@ rsync                           # system-copy
 surf                            # web-browser-light
 chromium                        # web-browser
 firefox                         # web-browser-secure
+newsboat                        # terminal-news-feed
 feh                             # image-viewer-light
 ristretto                       # image-viewer
 iwl*-firmware                   # hardware-wifi-driver
@@ -183,6 +184,7 @@ pulseaudio-utils                # system-audio-configuration
 rsync                           # system-copy
 surf                            # web-browser-light
 firefox                         # web-browser-secure
+newsboat                        # terminal-news-feed
 feh                             # image-viewer-light
 ristretto                       # image-viewer
 iwl*-firmware                   # hardware-wifi-driver
@@ -226,6 +228,7 @@ rsync                           # system-copy
 surf                            # web-browser-light
 chromium                        # web-browser
 firefox                         # web-browser-secure
+newsboat                        # terminal-news-feed
 feh                             # image-viewer-light
 ristretto                       # image-viewer
 iwl*-firmware                   # hardware-wifi-driver
