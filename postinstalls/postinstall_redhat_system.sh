@@ -65,6 +65,27 @@ systemctl stop sshd
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
+# config of selinux
+echo -e "        ${GREEN} # Set selinux to enforce ${COLOR_OFF}"
+sed -i 's/SELINUX=.*/SELINUX=enforcing/' /etc/selinux/config
+systemctl restart selinux-basics.service
+sestatus
+echo -e "[${GREEN} DONE ${COLOR_OFF}]"
+echo
+
+# rules for dnf on fedora
+if [ "$1" != "--centos" ] ; then
+    echo -e "        ${GREEN} # Set dnf deltarpm (for slow connections), no weak dependencies (only requires) and 3 kernels to keep ${COLOR_OFF}"
+    echo "[main]
+gpgcheck=1
+installonly_limit=3
+clean_requirements_on_remove=true
+install_weak_deps=false
+fastestmirror=true" > /etc/dnf/dnf.conf
+    echo -e "[${GREEN} DONE ${COLOR_OFF}]"
+    echo
+fi
+
 ######################### REPOS
 
 # epel repository for centos and fusion repository for fedora full mode
@@ -102,10 +123,10 @@ echo -e "        ${GREEN} # Install the i3 windows manager ${COLOR_OFF}"
 
 if [ "$1" = "--centos" ] ; then
     yum --assumeyes groupinstall "X Window System"
-    yum --assumeyes install lightdm xorg-x11-xinit-session dejavu-sans-mono-fonts i3 i3status
+    yum --assumeyes install lightdm xorg-x11-xinit-session levien-inconsolata-fonts i3 i3status
 else
     dnf --assumeyes groupinstall base-x
-    dnf --assumeyes install lightdm xorg-x11-xinit-session dejavu-sans-mono-fonts i3 i3status initial-setup-gui xvattr xorg-x11-drivers
+    dnf --assumeyes install lightdm xorg-x11-xinit-session levien-inconsolata-fonts i3 i3status initial-setup-gui xvattr xorg-x11-drivers
 fi
 systemctl set-default graphical.target
 systemctl enable lightdm
@@ -360,18 +381,6 @@ grub2-mkconfig --output=/boot/efi/EFI/fedora/grub.cfg
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
-# rules for dnf on fedora
-if [ "$1" != "--centos" ] ; then
-    echo -e "        ${GREEN} # Set dnf deltarpm (for slow connections) and two kernel to keep ${COLOR_OFF}"
-    echo "[main]
-gpgcheck=1
-installonly_limit=3
-clean_requirements_on_remove=true
-fastestmirror=true" > /etc/dnf/dnf.conf
-    echo -e "[${GREEN} DONE ${COLOR_OFF}]"
-    echo
-fi
-
 ######################### CONFIG
 
 # create my own folders
@@ -392,15 +401,15 @@ echo
 
 # set my own config dot files
 echo -e "        ${GREEN} # Download my config files from gitlab and put them on ${COLOR_OFF}"
-if [ "$1" != "--minimal" ] ; then
-sudo --user=$MYUSER sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-sudo --user=$MYUSER git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-sudo --user=$MYUSER git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-fi
-sudo --user=$MYUSER ranger --copy-config=all
 cd /home/$MYUSER/Downloads
-sudo --user=$MYUSER wget https://framagit.org/efydd/config/-/archive/master/config-master.tar
-sudo --user=$MYUSER tar xvf config-master.tar
+sudo --user=$MYUSER wget https://framagit.org/efydd/dotfiles/-/archive/master/dotfiles-master.tar
+sudo --user=$MYUSER tar xvf dotfiles-master.tar
+sudo --user=$MYUSER mv .config          /home/$MYUSER/
+sudo --user=$MYUSER mv .mozilla         /home/$MYUSER/
+sudo --user=$MYUSER mv .var             /home/$MYUSER/
+sudo --user=$MYUSER mv .Xdefaults       /home/$MYUSER/
+sudo --user=$MYUSER mv .zshrc           /home/$MYUSER/
+sudo --user=$MYUSER mv .bashrc          /home/$MYUSER/
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
