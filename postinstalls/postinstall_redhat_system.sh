@@ -93,7 +93,8 @@ case $1 in
 "--centos" )
     echo -e "        ${GREEN} # Add the epel repositories (must have for a desktop application) ${COLOR_OFF}"
     yum --assumeyes install epel-release
-    #yum-config-manager --enable extras #if yum-utils
+    yum-config-manager --enable extras
+    subscription-manager repos --enable "rhel-*-optional-rpms" --enable "rhel-*-extras-rpms"
     yum check-update
     echo -e "[${GREEN} DONE ${COLOR_OFF}]"
     echo
