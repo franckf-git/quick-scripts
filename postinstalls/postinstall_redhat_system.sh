@@ -169,7 +169,6 @@ chromium                        # web-browser
 firefox                         # web-browser-secure
 newsboat                        # terminal-news-feed
 feh                             # image-viewer-light
-ristretto                       # image-viewer
 iwl*-firmware                   # hardware-wifi-driver
 mpv                             # video-audio-player
 mupdf                           # pdf-viewer-light
@@ -208,7 +207,6 @@ surf                            # web-browser-light
 firefox                         # web-browser-secure
 newsboat                        # terminal-news-feed
 feh                             # image-viewer-light
-ristretto                       # image-viewer
 iwl*-firmware                   # hardware-wifi-driver
 mupdf                           # pdf-viewer-light
 neovim                          # editor-light
@@ -252,7 +250,6 @@ chromium                        # web-browser
 firefox                         # web-browser-secure
 newsboat                        # terminal-news-feed
 feh                             # image-viewer-light
-ristretto                       # image-viewer
 iwl*-firmware                   # hardware-wifi-driver
 mpv                             # video-audio-player
 mupdf                           # pdf-viewer-light
