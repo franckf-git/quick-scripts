@@ -168,7 +168,7 @@ surf                            # web-browser-light
 chromium                        # web-browser
 firefox                         # web-browser-secure
 newsboat                        # terminal-news-feed
-feh                             # image-viewer-light
+feh                             # image-viewer-light ghettoforge ?
 iwl*-firmware                   # hardware-wifi-driver
 mpv                             # video-audio-player
 mupdf                           # pdf-viewer-light
@@ -226,6 +226,7 @@ myprogram="
 rofi                            # desktop-applications-launch
 fontawesome-fonts               # desktop-icons
 i3lock                          # desktop-locker
+python3-pillow                  # python for blur lock
 conky                           # desktop-display-info
 dunst                           # desktop-display-notify
 scrot                           # desktop-screenshot
@@ -239,8 +240,6 @@ bleachbit                       # system-clean
 flatpak                         # system-applications
 git                             # system-versionning
 htop                            # system-monitor
-xfce4-power-manager             # system-configuration-power
-network-manager-applet          # system-configuration-network
 numlockx                        # system-numpad
 pulseaudio                      # system-audio
 pulseaudio-utils                # system-audio-configuration
@@ -250,7 +249,7 @@ chromium                        # web-browser
 firefox                         # web-browser-secure
 newsboat                        # terminal-news-feed
 feh                             # image-viewer-light
-iwl*-firmware                   # hardware-wifi-driver
+iwl*-firmware                   # hardware-wifi-driver       #optionnal
 mpv                             # video-audio-player
 mupdf                           # pdf-viewer-light
 neovim                          # editor-light
