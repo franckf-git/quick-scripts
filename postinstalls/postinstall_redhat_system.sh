@@ -69,6 +69,7 @@ firewall-cmd --lockdown-on
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -j DROP
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 1 -j DROP
 # règle de sortie supérieurs au drop
+firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 22 -j ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 80 -j ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 443 -j ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 53 -j ACCEPT
