@@ -61,19 +61,19 @@ systemctl enable firewalld
 # zone par defaut
 firewall-cmd --set-default-zone=drop
 # efface les anciennes règles
-firewall-cmd --direct --permanent --remove-rules ipv4 filter OUTPUT
 firewall-cmd --direct --permanent --remove-rules ipv4 filter INPUT
+firewall-cmd --direct --permanent --remove-rules ipv4 filter OUTPUT
 # verrouiller le parefeu a certaines applications root
 firewall-cmd --lockdown-on
 # pas d entrée - pas de sortie
-firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -j DROP
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT  0 -j DROP
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 1 -j DROP
 # règle de sortie supérieurs au drop
-firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 22 -j ACCEPT
-firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 80 -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 22  -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 80  -j ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 443 -j ACCEPT
-firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 53 -j ACCEPT
-firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p udp --dport 53 -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m tcp --dport 53  -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p udp -m udp --dport 53  -j ACCEPT
 # pas de ping
 firewall-cmd --zone=public --permanent --add-icmp-block=destination-unreachable
 # rechargement
