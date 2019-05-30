@@ -269,7 +269,7 @@ pulseaudio-utils                # system-audio-configuration
 rsync                           # system-copy
 surf                            # web-browser-light
 chromium                        # web-browser
-firefox                         # web-browser-secure
+w3m-img                         # web-browser-secure
 newsboat                        # terminal-news-feed
 feh                             # image-viewer-light
 iwl*-firmware                   # hardware-wifi-driver       #optionnal
