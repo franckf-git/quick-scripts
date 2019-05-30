@@ -341,11 +341,14 @@ org.gnome.Evince                  # pdf-viewer
 org.gnome.PasswordSafe            # security-passwords
 fr.handbrake.ghb                  # encode
 flathub com.makemkv.MakeMKV       # encode
+org.mozilla.FirefoxDevEdition     # dev firefox
+freedesktop.Platform.ffmpeg       # audio support
 "
 ;;
 esac
+flatpak remote-add --from org.mozilla.FirefoxRepo https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install --assumeyes flathub $myflatpak
+flatpak install --assumeyes $myflatpak
 echo -e "[${GREEN} DONE ${COLOR_OFF}]"
 echo
 
