@@ -1,4 +1,6 @@
 #! /usr/bin/python3
+#dnf install python3-pip
+#pip3 install simple_http_server
 
 # import des modules
 import http.server
