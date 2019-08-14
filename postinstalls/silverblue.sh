@@ -75,14 +75,14 @@ echo
 
 # config of selinux
 echo -e "        ${GREEN} # Disable useless services ${COLOR_OFF}"
-systemctl disable chronyd.service 
-systemctl disable cups.service 
-systemctl disable bluetooth.service 
-systemctl disable nfs-client.target 
-systemctl disable nfs-convert.service 
-systemctl disable qemu-guest-agent.service 
-systemctl disable spice-vdagentd.socket 
-systemctl disable vboxservice.service 
+systemctl disable chronyd.service
+systemctl disable cups.service
+systemctl disable bluetooth.service
+systemctl disable nfs-client.target
+systemctl disable nfs-convert.service
+systemctl disable qemu-guest-agent.service
+systemctl disable spice-vdagentd.socket
+systemctl disable vboxservice.service
 systemctl disable sshd
 systemctl stop sshd
 systemctl daemon-reload
