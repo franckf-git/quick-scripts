@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>Authentication</title>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="fontawesome/css/solid.min.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-3">
+
+                <h1><span class="fas fa-sign-in-alt"></span> Connexion</h1>
+
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+
+                    <button type="submit" class="btn btn-warning btn-lg">Connexion</button>
+                </form>
+
+                <hr>
+
+                <p><a href="/signup">Créer un compte</a></p>
+                <p><a href="/">Retour à l'acceuil</a></p>
+
+                <div class="text-center">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae debitis quis autem esse quam
+                    aspernatur velit saepe labore illum ducimus minus, sequi reiciendis officiis voluptatum in ratione
+                    deleniti assumenda similique.
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+</html>
