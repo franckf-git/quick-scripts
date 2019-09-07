@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="bootstrap.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="connexion-3.css" rel="stylesheet">
+        <title>Log In</title>
+    </head>
+
+    <body onLoad="document.loginform.authen_username.focus();">
+        <div class="container">
+
+            <form class="form-signin" role="form" action="----------" method="POST" name="loginform" autocomplete="off">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="authen_username" name="authen_username" class="form-control"
+                    placeholder="Username" required="" autofocus="" autocomplete="off">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="authen_password" name="authen_password" class="form-control"
+                    placeholder="Password" required="" autocomplete="off">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <input type="hidden" name="destination" value="index" />
+                <input type="hidden" name="----------" value="----------" />
+            </form>
+
+        </div>
+    </body>
+
+</html>
