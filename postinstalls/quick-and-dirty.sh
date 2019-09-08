@@ -2,7 +2,7 @@
 systemctl start firewalld
 systemctl enable firewalld
 firewall-cmd --lockdown-on
-firewall-cmd --zone=public --permanent --add-icmp-block=destination-unreachable
+firewall-cmd --zone=drop --permanent --add-icmp-block=destination-unreachable
 firewall-cmd --set-default-zone=drop
 firewall-cmd --complete-reload
 firewall-cmd --permanent --direct --get-all-rules
