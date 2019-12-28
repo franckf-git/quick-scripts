@@ -1,3 +1,4 @@
+#! /bin/bash
 # After workstation install
 # Firewall and SElinux
 systemctl start firewalld
@@ -20,6 +21,7 @@ echo 'keepcache=true' >> /etc/dnf/dnf.conf
 # Disable unused services
 systemctl disable chronyd.service
 systemctl disable cups.service
+systemctl disable ModemManager.service
 systemctl disable bluetooth.service
 systemctl disable nfs-client.target
 systemctl disable nfs-convert.service
@@ -33,10 +35,14 @@ systemctl daemon-reload
 flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraproject.org
 flatpak remote-add --if-not-exists firefoxrepo https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
-# Install
-dnf upgrade --assumeyes 
+# Install apps
+dnf upgrade --assumeyes
 dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium neovim tuned prename
 flatpak install flathub --assumeyes io.github.celluloid_player.Celluloid
 flatpak install flathub --assumeyes org.gnome.FeedReader
 flatpak install flathub --assumeyes io.gitlab.Goodvibes
 flatpak install flathub --assumeyes io.freetubeapp.FreeTube
+# Uninstall some very RAM hungry apps
+dnf autoremove --assumeyes PackageKit gnome-software
+dnf autoremove --assumeyes abrt*
+dnf autoremove --assumeyes libvirt* gnome-boxes
