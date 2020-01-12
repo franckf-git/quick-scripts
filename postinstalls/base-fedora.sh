@@ -37,7 +37,8 @@ flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraprojec
 flatpak remote-add --if-not-exists firefoxrepo https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
 # Install apps
 dnf upgrade --assumeyes
-dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium neovim tuned prename
+dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename
+dnf install --assumeyes neovim newsboat xterm w3m-img ranger tmux
 flatpak install flathub --assumeyes io.github.celluloid_player.Celluloid
 flatpak install flathub --assumeyes org.gnome.FeedReader
 flatpak install flathub --assumeyes io.gitlab.Goodvibes
