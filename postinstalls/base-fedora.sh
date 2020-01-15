@@ -38,7 +38,8 @@ flatpak remote-add --if-not-exists firefoxrepo https://firefox-flatpak.mojefedor
 # Install apps
 dnf upgrade --assumeyes
 dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename
-dnf install --assumeyes neovim newsboat xterm w3m-img ranger tmux
+dnf install --assumeyes neovim xterm
+#dnf install --assumeyes i3 rofi newsboat w3m-img ranger tmux
 flatpak install flathub --assumeyes io.github.celluloid_player.Celluloid
 flatpak install flathub --assumeyes org.gnome.FeedReader
 flatpak install flathub --assumeyes io.gitlab.Goodvibes
