@@ -28,6 +28,8 @@ systemctl disable nfs-convert.service
 systemctl disable qemu-guest-agent.service
 systemctl disable spice-vdagentd.socket
 systemctl disable vboxservice.service
+systemctl disable rtkit-daemon
+systemctl disable postfix
 systemctl disable sshd
 systemctl stop sshd
 systemctl daemon-reload
@@ -36,6 +38,7 @@ flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.
 flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraproject.org
 flatpak remote-add --if-not-exists firefoxrepo https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
 # Install apps
+# dnf install centos-release-stream epel-release --assumeyes
 dnf upgrade --assumeyes
 dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename
 dnf install --assumeyes neovim xterm
