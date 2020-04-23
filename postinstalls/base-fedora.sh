@@ -36,7 +36,6 @@ systemctl daemon-reload
 ############ Flatpak
 flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraproject.org
-flatpak remote-add --if-not-exists firefoxrepo https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
 ############ Install apps
 #centos : dnf install centos-release-stream epel-release --assumeyes
 dnf upgrade --assumeyes
