@@ -41,7 +41,7 @@ flatpak remote-add --if-not-exists firefoxrepo https://firefox-flatpak.mojefedor
 #centos : dnf install centos-release-stream epel-release --assumeyes
 dnf upgrade --assumeyes
 dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename
-dnf install --assumeyes neovim xterm
+dnf install --assumeyes neovim st
 #dnf install --assumeyes i3 rofi newsboat w3m-img ranger tmux numlockx
 flatpak install flathub --assumeyes io.github.celluloid_player.Celluloid
 flatpak install flathub --assumeyes org.gnome.FeedReader
