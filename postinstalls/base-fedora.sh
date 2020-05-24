@@ -37,7 +37,11 @@ systemctl daemon-reload
 flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraproject.org
 ############ Install apps
-#centos : dnf install centos-release-stream epel-release --assumeyes
+### centos : 
+#dnf install centos-release-stream --assumeyes
+#dnf install epel-release --assumeyes
+#dnf config-manager --set-enabled extras
+#dnf config-manager --set-enabled PowerTools
 dnf upgrade --assumeyes
 dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename
 dnf install --assumeyes neovim st
