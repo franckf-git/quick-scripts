@@ -40,8 +40,11 @@ flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraprojec
 ### centos : 
 #dnf install centos-release-stream --assumeyes
 #dnf install epel-release --assumeyes
+#dnf install --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
 #dnf config-manager --set-enabled extras
 #dnf config-manager --set-enabled PowerTools
+### rpm fusion :
+#dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade --assumeyes
 dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename neovim newsboat keepassxc
 #dnf install --assumeyes i3 rofi w3m-img ranger tmux numlockx
