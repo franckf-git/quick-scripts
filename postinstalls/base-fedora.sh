@@ -43,7 +43,7 @@ flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraprojec
 #dnf config-manager --set-enabled extras
 #dnf config-manager --set-enabled PowerTools
 dnf upgrade --assumeyes
-dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename neovim newsboat
+dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename neovim newsboat keepassxc
 #dnf install --assumeyes i3 rofi w3m-img ranger tmux numlockx
 #--setopt=install_weak_deps=False
 flatpak install flathub --assumeyes io.github.celluloid_player.Celluloid
