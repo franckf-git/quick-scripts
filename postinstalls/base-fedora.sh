@@ -43,13 +43,10 @@ flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraprojec
 #dnf config-manager --set-enabled extras
 #dnf config-manager --set-enabled PowerTools
 dnf upgrade --assumeyes
-dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename
-dnf install --assumeyes neovim st
-#dnf install --assumeyes i3 rofi newsboat w3m-img ranger tmux numlockx
+dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename neovim newsboat
+#dnf install --assumeyes i3 rofi w3m-img ranger tmux numlockx
 #--setopt=install_weak_deps=False
 flatpak install flathub --assumeyes io.github.celluloid_player.Celluloid
-flatpak install flathub --assumeyes org.gnome.FeedReader
-flatpak install flathub --assumeyes io.gitlab.Goodvibes
 flatpak install flathub --assumeyes io.freetubeapp.FreeTube
 ############ Uninstall some very RAM hungry apps
 dnf autoremove --assumeyes PackageKit gnome-software
