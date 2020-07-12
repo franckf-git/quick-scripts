@@ -46,7 +46,7 @@ flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraprojec
 ### rpm fusion :
 #dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade --assumeyes
-dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename neovim newsboat keepassxc
+dnf install --assumeyes zsh cockpit gnome-tweaks git htop rsync chromium tuned prename neovim newsboat keepassxc jetbrains-mono-fonts
 #dnf install --assumeyes i3 rofi w3m-img ranger tmux numlockx
 #--setopt=install_weak_deps=False
 flatpak install flathub --assumeyes io.github.celluloid_player.Celluloid
