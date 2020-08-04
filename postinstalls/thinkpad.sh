@@ -43,3 +43,6 @@ dnf install --assumeyes https://download1.rpmfusion.org/free/fedora/rpmfusion-fr
 dnf upgrade --assumeyes
 dnf install --assumeyes zsh cockpit gnome-tweaks git rsync chromium tuned prename neovim newsboat keepassxc jetbrains-mono-fonts i3 rofi w3m-img ranger mpv youtube-dl light nodejs
 dnf autoremove --assumeyes libreoffice*
+wget https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/x86_64/os/Packages/u/unclutter-8-17.fc29.x86_64.rpm
+dnf install --assumeyes unclutter-8-17.fc29.x86_64.rpm
+
