@@ -42,4 +42,4 @@ flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.
 dnf install --assumeyes https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade --assumeyes
 dnf install --assumeyes zsh cockpit gnome-tweaks git rsync chromium tuned prename neovim newsboat keepassxc jetbrains-mono-fonts i3 rofi w3m-img ranger mpv youtube-dl light nodejs
-
+dnf autoremove --assumeyes libreoffice*
