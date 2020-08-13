@@ -40,11 +40,11 @@ flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.
 flatpak remote-add --if-not-exists fedora      oci+https://registry.fedoraproject.org
 ############ Install apps
 ### centos : 
-#dnf install centos-release-stream --assumeyes
-#dnf install epel-release --assumeyes
-#dnf install --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+#dnf install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+#dnf install --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+#dnf install --nogpgcheck https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+#dnf config-manager --enable PowerTools
 #dnf config-manager --set-enabled extras
-#dnf config-manager --set-enabled PowerTools
 ### rpm fusion :
 #dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade --assumeyes
