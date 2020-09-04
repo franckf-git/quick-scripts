@@ -41,7 +41,7 @@ flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.
 ### rpm fusion :
 dnf install --assumeyes https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade --assumeyes
-dnf install --assumeyes cockpit gnome-tweaks git rsync chromium tuned prename neovim newsboat keepassxc jetbrains-mono-fonts i3 rofi w3m-img ranger mpv youtube-dl light nodejs fira-code-fonts yarnpkg
+dnf install --assumeyes cockpit gnome-tweaks git rsync chromium tuned prename neovim newsboat keepassxc jetbrains-mono-fonts i3 rofi w3m-img ranger mpv youtube-dl light nodejs fira-code-fonts yarnpkg highlight
 dnf autoremove --assumeyes libreoffice*
 wget https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/x86_64/os/Packages/u/unclutter-8-17.fc29.x86_64.rpm
 dnf install --assumeyes unclutter-8-17.fc29.x86_64.rpm
