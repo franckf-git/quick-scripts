@@ -41,4 +41,5 @@ done
 
 convert *.* "$nomdossier".pdf
 mv "$nomdossier".pdf ../
-
+cd ../
+rm -Rf $dossier
