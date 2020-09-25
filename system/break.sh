@@ -4,7 +4,7 @@
 
 while true
 do
-    sleep 20m && i3-msg 'workspace "---PAUSE---"'
+    sleep 1m && echo -e " \n \n---PAUSE---\n \n " | dmenu -l 5
 done
 
 # TODO rajouter une interraction pour raz le timer
