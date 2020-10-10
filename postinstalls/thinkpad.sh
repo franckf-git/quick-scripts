@@ -49,6 +49,7 @@ dnf install --assumeyes git rsync prename neovim
 dnf install --assumeyes chromium newsboat keepassxc
 # window manager
 dnf install --assumeyes i3 rofi w3m-img ranger highlight
+# alt : bspwm sxhkd
 # medias
 dnf install --assumeyes mpv youtube-dl
 # code
