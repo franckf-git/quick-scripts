@@ -40,6 +40,8 @@ tmux send-keys -t     $SESSION:$WIN7 "echo 3" Enter
 tmux split-window -h
 tmux send-keys -t     $SESSION:$WIN7 "echo 4" Enter
 tmux select-layout tiled
+# define size of panes
+# tmux resize-pane   -t $SESSION -L 30
 
 # launch tmux with $WIN0 first
 tmux select-window -t $SESSION:$WIN0
