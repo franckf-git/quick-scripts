@@ -59,3 +59,10 @@ dnf install --assumeyes xorg-x11-drv-amdgpu tuned light fira-code-fonts cockpit
 wget https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/x86_64/os/Packages/u/unclutter-8-17.fc29.x86_64.rpm
 dnf install --assumeyes unclutter-8-17.fc29.x86_64.rpm
 
+# tests for next install
+#dnf -y autoremove gnome-software PackageKit
+#dnf -y autoremove baobab cheese epiphany gnome-{calendar,characters,clocks,contacts,dictionary,disk-utility,font-viewer,logs,maps,photos,user-docs,,weather} gucharmap sushi
+#dnf -y autoremove cups simple-scan
+#dnf autoremove -y abrtd*
+#dnf autoremove -y libvirt*
+#dnf install --nogpgcheck -y cockpit-networkmanager cockpit-selinux cockpit-dashboard cockpit-system cockpit-storaged
