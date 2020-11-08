@@ -44,12 +44,11 @@ dnf autoremove --assumeyes libreoffice*
 dnf upgrade --assumeyes
 
 # basics tools
-dnf install --assumeyes git rsync prename neovim
+dnf install --assumeyes git rsync prename neovim feh rxvt-unicode
 # softwares
 dnf install --assumeyes chromium newsboat keepassxc
 # window manager
-dnf install --assumeyes i3 rofi w3m-img ranger highlight
-# alt : bspwm sxhkd
+dnf install --assumeyes bspwm sxhkd rofi w3m-img ranger highlight
 # medias
 dnf install --assumeyes mpv youtube-dl
 # code
