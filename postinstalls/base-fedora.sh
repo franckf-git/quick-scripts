@@ -1,5 +1,8 @@
 #! /bin/bash
 ############ After workstation install
+echo "After install and before reboot - you can install software on the live"
+echo "Change the mount folder to the new installed partition :"
+echo "sudo chroot /mnt/sysroot /bin/bash"
 ############ Firewall and SElinux
 systemctl start firewalld
 systemctl enable firewalld

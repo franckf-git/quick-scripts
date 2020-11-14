@@ -65,3 +65,4 @@ dnf install --assumeyes unclutter-8-17.fc29.x86_64.rpm
 #dnf autoremove -y abrtd*
 #dnf autoremove -y libvirt*
 #dnf install --nogpgcheck -y cockpit-networkmanager cockpit-selinux cockpit-dashboard cockpit-system cockpit-storaged
+# systemctl disable NetworkManager-wait-online.service # to disable wait for workspace login
