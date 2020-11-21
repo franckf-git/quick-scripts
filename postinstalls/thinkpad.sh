@@ -1,5 +1,4 @@
 #! /bin/bash
-############ After workstation install
 ############ Firewall and SElinux
 systemctl start firewalld
 systemctl enable firewalld
@@ -17,10 +16,7 @@ echo 'fastestmirror=true'      >> /etc/dnf/dnf.conf
 echo 'deltarpm=false'          >> /etc/dnf/dnf.conf
 echo 'keepcache=true'          >> /etc/dnf/dnf.conf
 echo 'install_weak_deps=false' >> /etc/dnf/dnf.conf
-#systemctl disable dnf-makecache.service
-#systemctl disable dnf-makecache.timer
 ############ Disable unused services
-systemctl list-units | grep service >> list-services
 systemctl disable chronyd.service
 systemctl disable cups.service
 systemctl disable ModemManager.service
@@ -39,7 +35,7 @@ systemctl daemon-reload
 ############ Flatpak
 flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.flatpakrepo
 ############ Install apps
-### rpm fusion :
+# rpm fusion
 dnf install --assumeyes https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
@@ -47,7 +43,6 @@ dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-n
 # dnf install gnome-shell gdm gnome-tweaks nautilus gnome-terminal
 # systemctl set-default graphical.target
 
-dnf autoremove --assumeyes libreoffice*
 dnf upgrade --assumeyes
 # basics tools
 dnf install --assumeyes git rsync prename neovim feh rxvt-unicode
@@ -64,5 +59,5 @@ dnf install --assumeyes xorg-x11-drv-amdgpu tuned light fira-code-fonts cockpit
 wget https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/x86_64/os/Packages/u/unclutter-8-17.fc29.x86_64.rpm
 dnf install --assumeyes unclutter-8-17.fc29.x86_64.rpm
 
-# tests for next install
-# systemctl disable NetworkManager-wait-online.service # to disable wait for workspace login
+# to disable wait for workspace login
+# systemctl disable NetworkManager-wait-online.service
