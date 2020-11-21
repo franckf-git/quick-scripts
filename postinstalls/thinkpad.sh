@@ -41,9 +41,13 @@ flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.
 ############ Install apps
 ### rpm fusion :
 dnf install --assumeyes https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# if minimal install
+# dnf install gnome-shell gdm gnome-tweaks nautilus gnome-terminal
+# systemctl set-default graphical.target
+
 dnf autoremove --assumeyes libreoffice*
 dnf upgrade --assumeyes
-
 # basics tools
 dnf install --assumeyes git rsync prename neovim feh rxvt-unicode
 # softwares
@@ -60,10 +64,4 @@ wget https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Eve
 dnf install --assumeyes unclutter-8-17.fc29.x86_64.rpm
 
 # tests for next install
-#dnf -y autoremove gnome-software PackageKit
-#dnf -y autoremove baobab cheese epiphany gnome-{calendar,characters,clocks,contacts,dictionary,disk-utility,font-viewer,logs,maps,photos,user-docs,,weather} gucharmap sushi
-#dnf -y autoremove cups simple-scan
-#dnf autoremove -y abrtd*
-#dnf autoremove -y libvirt*
-#dnf install --nogpgcheck -y cockpit-networkmanager cockpit-selinux cockpit-dashboard cockpit-system cockpit-storaged
 # systemctl disable NetworkManager-wait-online.service # to disable wait for workspace login
