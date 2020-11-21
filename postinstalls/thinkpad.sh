@@ -46,7 +46,7 @@ dnf upgrade --assumeyes
 # basics tools
 dnf install --assumeyes git rsync prename neovim feh rxvt-unicode
 # softwares
-dnf install --assumeyes chromium newsboat keepassxc
+dnf install --assumeyes chromium-browser-privacy newsboat keepassxc
 # window manager
 dnf install --assumeyes bspwm sxhkd rofi w3m-img ranger highlight
 # medias
