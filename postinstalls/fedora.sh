@@ -55,9 +55,12 @@ dnf install --assumeyes mpv youtube-dl
 # code
 dnf install --assumeyes nodejs yarnpkg
 # systems
-dnf install --assumeyes xorg-x11-drv-amdgpu tuned light fira-code-fonts cockpit
+dnf install --assumeyes tuned light fira-code-fonts cockpit
 wget https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/x86_64/os/Packages/u/unclutter-8-17.fc29.x86_64.rpm
 dnf install --assumeyes unclutter-8-17.fc29.x86_64.rpm
+rm unclutter-8-17.fc29.x86_64.rpm
+# if AMD (thinkpad)
+dnf install --assumeyes xorg-x11-drv-amdgpu
 
 # to disable wait for workspace login
 # systemctl disable NetworkManager-wait-online.service
