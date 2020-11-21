@@ -40,7 +40,8 @@ systemctl daemon-reload
 flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.flatpakrepo
 ############ Install apps
 ### rpm fusion :
-dnf install --assumeyes https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf install --assumeyes https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # if minimal install
 # dnf install gnome-shell gdm gnome-tweaks nautilus gnome-terminal
