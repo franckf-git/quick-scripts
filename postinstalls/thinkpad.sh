@@ -16,6 +16,7 @@ sleep 3s
 echo 'fastestmirror=true' >> /etc/dnf/dnf.conf
 echo 'deltarpm=false' >> /etc/dnf/dnf.conf
 echo 'keepcache=true' >> /etc/dnf/dnf.conf
+echo 'install_weak_deps=false' >> /etc/dnf/dnf.conf
 #systemctl disable dnf-makecache.service
 #systemctl disable dnf-makecache.timer
 ############ Disable unused services
