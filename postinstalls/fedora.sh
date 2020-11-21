@@ -17,19 +17,18 @@ echo 'deltarpm=false'          >> /etc/dnf/dnf.conf
 echo 'keepcache=true'          >> /etc/dnf/dnf.conf
 echo 'install_weak_deps=false' >> /etc/dnf/dnf.conf
 ############ Disable unused services
-systemctl disable chronyd.service
-systemctl disable cups.service
 systemctl disable ModemManager.service
 systemctl disable bluetooth.service
+systemctl disable chronyd.service
+systemctl disable cups.service
 systemctl disable nfs-client.target
 systemctl disable nfs-convert.service
-systemctl disable qemu-guest-agent.service
-systemctl disable spice-vdagentd.socket
-systemctl disable vboxservice.service
-systemctl disable cups.service
-systemctl disable rtkit-daemon
 systemctl disable postfix
+systemctl disable qemu-guest-agent.service
+systemctl disable rtkit-daemon
+systemctl disable spice-vdagentd.socket
 systemctl disable sshd
+systemctl disable vboxservice.service
 systemctl stop sshd
 systemctl daemon-reload
 ############ Flatpak
