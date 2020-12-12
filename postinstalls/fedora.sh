@@ -1,4 +1,5 @@
 #! /bin/bash
+# fedora.fauchet.ovh
 ############ Firewall and SElinux
 systemctl start firewalld
 systemctl enable firewalld
