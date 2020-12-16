@@ -1,6 +1,6 @@
 #! /bin/bash
 # TODO test on install
-# Repos
+############ Repos
 echo "
 # Security updates
 deb http://security.debian.org/ buster/updates main contrib non-free
@@ -41,6 +41,7 @@ sleep 3s
 apt-get install --assume-yes apparmor-profiles apparmor-utils
 aa-enforce /etc/apparmor.d/*
 aa-status
+# aa-unconfined
 sleep 3s
 ############ Disable unused services
 systemctl disable ModemManager.service
@@ -62,7 +63,7 @@ systemctl stop sshd
 systemctl daemon-reload
 ############ Flatpak
 apt-get install --assume-yes flatpak
-flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ############ Install apps
 # if minimal install
 # apt-get install --no-install-recommends --assume-yes gnome-core gdm3 network-manager-gnome
@@ -85,27 +86,27 @@ apt-get install --assume-yes firmware-linux firmware-linux-free firmware-linux-n
 # if AMD (thinkpad)
 apt-get install --assume-yes xserver-xorg-video-amdgpu
 tasksel --task-packages laptop
+# else
+apt-get install --assume-yes intel-microcode
 
 apt-get autoremove --assume-yes
 apt-get autoclean --assume-yes
 
 ############ OPTIMIZE
+# GRUB
 sed --in-place='s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 update-grub
 # SSD
 sed --in-place='s/defaults/defaults,discard/g' /etc/fstab
 sed --in-place='s/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
 echo noop | tee /sys/block/sda/queue/scheduler
-
-#laptop mode
+# laptop mode
 echo "
 vm.laptop_mode = 5 " >> /etc/sysctl.conf
-
-#lower swap level
+# lower swap level
 echo "
 vm.swappiness = 10 " >> /etc/sysctl.conf
-
-#secure shm
+# secure shm
 echo "
 tmpfs /dev/shm tmpfs  defaults,noatime,nosuid,noexec,nodev   0 0" >> /etc/fstab
 mount /dev/shm
