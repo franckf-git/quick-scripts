@@ -96,11 +96,11 @@ apt-get autoclean --assume-yes
 
 ############ OPTIMIZE
 # GRUB
-sed --in-place='s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
+sed --in-place 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 update-grub
 # SSD
-sed --in-place='s/defaults/defaults,discard/g' /etc/fstab
-sed --in-place='s/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
+sed --in-place 's/defaults/defaults,discard/g' /etc/fstab
+sed --in-place 's/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
 echo noop | tee /sys/block/sda/queue/scheduler
 # laptop mode
 echo "
