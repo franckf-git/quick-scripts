@@ -1,5 +1,7 @@
 #! /bin/bash
 # TODO test on install
+echo "
+PATH=$PATH:/usr/sbin" >> /root/.bashrc
 ############ Repos
 echo "
 # Security updates
