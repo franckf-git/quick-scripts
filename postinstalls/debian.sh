@@ -87,7 +87,7 @@ apt-get install --assume-yes tuned unclutter fonts-firacode
 apt-get install --assume-yes firmware-linux firmware-linux-free firmware-linux-nonfree firmware-iwlwifi
 # if AMD (thinkpad)
 apt-get install --assume-yes xserver-xorg-video-amdgpu
-tasksel --task-packages laptop
+# tasksel - laptop
 # else
 apt-get install --assume-yes intel-microcode
 
@@ -100,16 +100,9 @@ sed --in-place 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 update-grub
 # SSD
 sed --in-place 's/defaults/defaults,discard/g' /etc/fstab
-sed --in-place 's/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
-echo noop | tee /sys/block/sda/queue/scheduler
 # laptop mode
 echo "
 vm.laptop_mode = 5 " >> /etc/sysctl.conf
 # lower swap level
 echo "
 vm.swappiness = 10 " >> /etc/sysctl.conf
-# secure shm
-echo "
-tmpfs /dev/shm tmpfs  defaults,noatime,nosuid,noexec,nodev   0 0" >> /etc/fstab
-mount /dev/shm
-
