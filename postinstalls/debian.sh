@@ -106,3 +106,5 @@ vm.laptop_mode = 5 " >> /etc/sysctl.conf
 # lower swap level
 echo "
 vm.swappiness = 10 " >> /etc/sysctl.conf
+
+git clone https://gitlab.com/franckf/dotfiles.git
