@@ -75,7 +75,7 @@ apt-get upgrade --assume-yes
 # basics tools
 apt-get install --assume-yes git rsync rename neovim feh rxvt-unicode
 # softwares
-apt-get install --assume-yes chromium newsboat keepassxc
+apt-get install --assume-yes chromium chromium-sandbox newsboat keepassxc
 # window manager
 apt-get install --assume-yes bspwm sxhkd rofi w3m-img ranger highlight
 # medias
