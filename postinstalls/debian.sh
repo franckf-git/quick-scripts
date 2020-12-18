@@ -81,7 +81,7 @@ apt-get install --assume-yes bspwm sxhkd rofi w3m-img ranger highlight
 # medias
 apt-get install --assume-yes mpv youtube-dl
 # code
-apt-get install --assume-yes nodejs yarnpkg
+apt-get install --assume-yes nodejs npm
 # systems
 apt-get install --assume-yes tuned unclutter fonts-firacode
 apt-get install --assume-yes firmware-linux firmware-linux-free firmware-linux-nonfree firmware-iwlwifi
