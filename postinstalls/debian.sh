@@ -63,15 +63,15 @@ systemctl disable sshd
 systemctl disable vboxservice.service
 systemctl stop sshd
 systemctl daemon-reload
-############ Flatpak
-apt-get install --assume-yes flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ############ Install apps
 # if minimal install
 # apt-get install --no-install-recommends --assume-yes gnome-core gdm3 network-manager-gnome
 # systemctl set-default graphical.target
 
 apt-get upgrade --assume-yes
+# flatpak
+apt-get install --assume-yes flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 # basics tools
 apt-get install --assume-yes git rsync rename neovim feh rxvt-unicode
 # softwares
