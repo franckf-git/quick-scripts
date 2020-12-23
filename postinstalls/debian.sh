@@ -87,7 +87,6 @@ apt-get install --assume-yes tuned unclutter fonts-firacode
 apt-get install --assume-yes firmware-linux firmware-linux-free firmware-linux-nonfree firmware-iwlwifi
 # if AMD (thinkpad)
 apt-get install --assume-yes xserver-xorg-video-amdgpu
-# tasksel - laptop
 # else
 apt-get install --assume-yes intel-microcode
 
@@ -106,5 +105,16 @@ vm.laptop_mode = 5 " >> /etc/sysctl.conf
 # lower swap level
 echo "
 vm.swappiness = 10 " >> /etc/sysctl.conf
+# touchpad
+apt remove xserver-xorg-input-synaptics
+apt install xserver-xorg-input-libinput
+mkdir /etc/X11/xorg.conf.d
+echo 'Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "Tapping" "on"
+EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 
 git clone https://gitlab.com/franckf/dotfiles.git
