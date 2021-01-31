@@ -4,7 +4,7 @@ clear
 echo "started - $(date)"
 
 short_loop () {
-    sleep 1m
+    sleep 5m
     mpv /usr/share/sounds/gnome/default/alerts/drip.ogg >> /dev/null 2>&1
     echo "take a break - look away - 30 sec"
     sleep 30s
