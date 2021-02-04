@@ -106,8 +106,8 @@ vm.laptop_mode = 5 " >> /etc/sysctl.conf
 echo "
 vm.swappiness = 10 " >> /etc/sysctl.conf
 # touchpad
-apt remove xserver-xorg-input-synaptics
-apt install xserver-xorg-input-libinput
+apt-get remove xserver-xorg-input-synaptics
+apt-get install xserver-xorg-input-libinput
 mkdir /etc/X11/xorg.conf.d
 echo 'Section "InputClass"
         Identifier "libinput touchpad catchall"
@@ -116,5 +116,9 @@ echo 'Section "InputClass"
         Driver "libinput"
         Option "Tapping" "on"
 EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
+
+# extra security
+dpkg --verify
+apt-get install checksecurity chkrootkit rkhunter
 
 git clone https://gitlab.com/franckf/dotfiles.git
