@@ -38,28 +38,26 @@ flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.
 dnf install --assumeyes https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-# if minimal install
-# dnf install gnome-shell gdm gnome-tweaks nautilus gnome-terminal
-# systemctl set-default graphical.target
-
 dnf upgrade --assumeyes
 # basics tools
-dnf install --assumeyes git rsync prename neovim feh rxvt-unicode
+dnf install --assumeyes git rsync prename neovim
 # softwares
-dnf install --assumeyes chromium-browser-privacy newsboat keepassxc
-# window manager
-dnf install --assumeyes bspwm sxhkd rofi w3m-img ranger highlight
+dnf install --assumeyes chromium-browser newsboat keepassxc
+# file manager
+dnf install --assumeyes w3m-img ranger xclip
 # medias
 dnf install --assumeyes mpv youtube-dl
 # code
-dnf install --assumeyes nodejs yarnpkg
+dnf install --assumeyes nodejs
 # systems
-dnf install --assumeyes tuned light fira-code-fonts cockpit
-wget https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/x86_64/os/Packages/u/unclutter-8-17.fc29.x86_64.rpm
-dnf install --assumeyes unclutter-8-17.fc29.x86_64.rpm
-rm unclutter-8-17.fc29.x86_64.rpm
+dnf install --assumeyes tuned fira-code-fonts
 # if AMD (thinkpad)
 dnf install --assumeyes xorg-x11-drv-amdgpu
+
+# power mangement
+tuned --daemon --profile powersave
+tuned-adm active
+tuned-adm verify
 
 # to disable wait for workspace login
 # systemctl disable NetworkManager-wait-online.service
