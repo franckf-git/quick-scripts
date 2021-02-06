@@ -59,5 +59,9 @@ tuned --daemon --profile powersave
 tuned-adm active
 tuned-adm verify
 
+# TODO lightdm autologin
+
+# TODO GRUB 1s
+
 # to disable wait for workspace login
 # systemctl disable NetworkManager-wait-online.service
