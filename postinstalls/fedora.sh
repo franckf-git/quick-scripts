@@ -42,7 +42,7 @@ dnf upgrade --assumeyes
 # basics tools
 dnf install --assumeyes git rsync prename neovim
 # softwares
-dnf install --assumeyes chromium-browser newsboat keepassxc
+dnf install --assumeyes chromium-browser newsboat urlview keepassxc
 # file manager
 dnf install --assumeyes w3m-img ranger xclip
 # medias
