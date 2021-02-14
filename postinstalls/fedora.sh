@@ -44,7 +44,7 @@ dnf install --assumeyes chromium newsboat urlview keepassxc
 # file manager
 dnf install --assumeyes w3m-img ranger xclip highlight
 # medias
-dnf install --assumeyes mpv youtube-dl
+dnf install --assumeyes mpv youtube-dl ffmpeg
 # code
 dnf install --assumeyes nodejs golang
 # systems
