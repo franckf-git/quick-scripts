@@ -8,7 +8,6 @@ firewall-cmd --permanent --direct --get-all-rules
 firewall-cmd --direct --get-all-rules
 firewall-cmd --list-all
 sleep 3s
-systemctl restart selinux-basics.service
 sestatus
 sleep 3s
 ############ DNF optimisations
@@ -23,7 +22,6 @@ systemctl disable chronyd.service
 systemctl disable cups.service
 systemctl disable nfs-client.target
 systemctl disable nfs-convert.service
-systemctl disable postfix
 systemctl disable qemu-guest-agent.service
 systemctl disable rtkit-daemon
 systemctl disable spice-vdagentd.socket
@@ -38,17 +36,17 @@ flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.
 dnf install --assumeyes https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-dnf upgrade --assumeyes
+dnf upgrade --assumeyes --refresh
 # basics tools
 dnf install --assumeyes git rsync prename neovim
 # softwares
-dnf install --assumeyes chromium-browser newsboat urlview keepassxc
+dnf install --assumeyes chromium newsboat urlview keepassxc
 # file manager
-dnf install --assumeyes w3m-img ranger xclip
+dnf install --assumeyes w3m-img ranger xclip highlight
 # medias
 dnf install --assumeyes mpv youtube-dl
 # code
-dnf install --assumeyes nodejs
+dnf install --assumeyes nodejs golang
 # systems
 dnf install --assumeyes tuned fira-code-fonts
 # if AMD (thinkpad)
@@ -59,9 +57,10 @@ tuned --daemon --profile powersave
 tuned-adm active
 tuned-adm verify
 
-# TODO lightdm autologin
-
-# TODO GRUB 1s
+# grub and autologin
+sed --in-place 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
+grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+sed --in-place 's/#autologin-user=/autologin-user=whoami/g' /etc/lightdm/lightdm.conf
 
 # to disable wait for workspace login
 # systemctl disable NetworkManager-wait-online.service
