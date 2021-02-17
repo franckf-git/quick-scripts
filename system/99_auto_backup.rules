@@ -1,0 +1,6 @@
+#vi /etc/udev/rules.d
+
+ACTION=="add", KERNEL=="sda", RUN+="udisksctl mount -b /dev/sda1 ; gio trash --empty && rsync --recursive --links --perms --times --owner --group --devices --specials --verbose --human-readable --copy-dirlinks --delete-before --stats --ignore-errors --exclude={"Vidéos/",".local/share/containers",".cache/",".var/app/org.gnome.Boxes/",".local/share/gnome-boxes/",".config/Ankama","Sauvegardes/videos"} /home/$USER /run/media/$USER/BACKUP/"
+
+#udevadm control --reload
+
