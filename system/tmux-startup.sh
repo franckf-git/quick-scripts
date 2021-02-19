@@ -20,6 +20,7 @@ tmux new-window  -t $SESSION -d -n $WIN4
 tmux new-window  -t $SESSION -d -n $WIN5
 tmux new-window  -t $SESSION -d -n $WIN6
 tmux new-window  -t $SESSION -d -n $WIN7
+tmux set-option -s -t $SESSION status off
 
 # commands for each windows
 tmux send-keys -t $SESSION:$WIN0 "nvim -p readme.md todo.md" Enter
