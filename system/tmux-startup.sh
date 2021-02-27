@@ -2,7 +2,7 @@
 
 # variables
 SESSION=FF
-WIN0=TODO
+WIN0=LAUNCH
 WIN1=1
 WIN2=2
 WIN3=3
@@ -27,7 +27,7 @@ tmux unbind C-b
 tmux set -g prefix C-q
 
 # commands for each windows
-tmux send-keys -t $SESSION:$WIN0 "nvim -p readme.md todo.md" Enter
+tmux send-keys -t $SESSION:$WIN0 "exit" Enter
 tmux send-keys -t $SESSION:$WIN1 "" Enter
 tmux send-keys -t $SESSION:$WIN2 "" Enter
 tmux send-keys -t $SESSION:$WIN3 "" Enter
@@ -49,6 +49,6 @@ tmux select-layout tiled
 # tmux resize-pane   -t $SESSION -L 30
 
 # launch tmux with $WIN0 first
-tmux select-window -t $SESSION:$WIN0
+tmux select-window -t $SESSION:$WIN1
 tmux -u attach -t     $SESSION
 
