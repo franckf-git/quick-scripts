@@ -64,3 +64,7 @@ sed --in-place 's/#autologin-user=/autologin-user=whoami/g' /etc/lightdm/lightdm
 
 # to disable wait for workspace login
 # systemctl disable NetworkManager-wait-online.service
+# gnome extension for tilling
+# gnome-shell-extension-material-shell
+# gnome-shell-extension-pop-shell
+
