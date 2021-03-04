@@ -8,7 +8,6 @@ firewall-cmd --permanent --direct --get-all-rules
 firewall-cmd --direct --get-all-rules
 firewall-cmd --list-all
 sleep 3s
-systemctl restart selinux-basics.service
 sestatus
 sleep 3s
 ############ DNF optimisations
@@ -39,7 +38,7 @@ dnf install --assumeyes epel-release
 # rpm fusion
 dnf install --nogpgcheck --assumeyes https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
 dnf install --nogpgcheck --assumeyes https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
-dnf config-manager --enable PowerTools
+dnf config-manager --enable powertools
 
 # if minimal install
 # dnf install gnome-shell gdm gnome-tweaks nautilus gnome-terminal
