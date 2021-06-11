@@ -73,15 +73,15 @@ apt-get dist-upgrade --assume-yes
 apt-get install --assume-yes flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 # basics tools
-apt-get install --assume-yes git rsync rename neovim feh rxvt-unicode
+apt-get install --assume-yes git rsync rename neovim
 # softwares
-apt-get install --assume-yes chromium chromium-sandbox newsboat keepassxc
+apt-get install --assume-yes chromium chromium-sandbox newsboat keepassxc urlview unzip curl
 # window manager
-apt-get install --assume-yes bspwm sxhkd rofi w3m-img ranger highlight
+apt-get install --assume-yes w3m-img ranger highlight
 # medias
-apt-get install --assume-yes mpv youtube-dl
+apt-get install --assume-yes mpv # get youtube-dl by github
 # code
-apt-get install --assume-yes nodejs npm
+apt-get install --assume-yes nodejs npm golang
 # systems
 apt-get install --assume-yes tuned unclutter fonts-firacode
 apt-get install --assume-yes firmware-linux firmware-linux-free firmware-linux-nonfree firmware-iwlwifi
@@ -116,6 +116,12 @@ echo 'Section "InputClass"
         Driver "libinput"
         Option "Tapping" "on"
 EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
+# autologin
+sed --in-place 's/#autologin-user=/autologin-user=user/g' /etc/lightdm/lightdm.conf
+# power mangement
+tuned --daemon --profile powersave
+tuned-adm active
+tuned-adm verify
 
 # extra security
 dpkg --verify
