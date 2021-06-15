@@ -48,3 +48,8 @@ dnf upgrade --assumeyes
 
 # to disable wait for workspace login
 # systemctl disable NetworkManager-wait-online.service
+
+############ Newsboat
+podman run --name=newsboat --detach --interactive --tty --volume ~/newsboat:/root:Z registry.fedoraproject.org/f34/fedora-toolbox
+podman exec --interactive --tty newsboat newsboat
+# to fix : urlview dl in ~/ ; scripts site>rss anim/scan
