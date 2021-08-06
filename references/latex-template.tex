@@ -1,0 +1,74 @@
+\documentclass[small]{zmdocument}
+
+\usepackage{blindtext}
+\title{TITLE}
+\author{AUTHOR}
+
+\makeglossaries
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+Intro
+
+\levelOneTitle{Level 1 TITLE}
+
+Lorem 1\textsuperscript{e} ipsum dolor sit amet, consectetuer adipiscing elit. Integer diam augue, egestas quis, aliquam ut, venenatis ut, quam. Quisque ut augue. Integer non neque a lectus venenatis fermentum. Morbi quis eros nec elit molestie vehicula. Integer nunc lacus, sodales posuere, rutrum quis, blandit at, mi. Vivamus imperdiet wisi vel mauris. Morbi mattis ante non metus. Sed turpis dui, fermentum ut, aliquam eget, vulputate ullamcorper, pede. Nam non dolor. Etiam lobortis, urna id bibendum convallis, ligula augue auctor eros, a dictum sapien mi a tellus. Proin vel justo. Nunc malesuada turpis a sapien.
+
+\levelTwoTitle{Level 2 SubTITLE}
+
+\begin{itemize}
+    \item\relax \externalLink{startpage}{https://franckf.gitlab.io/startpage/}
+    \item\relax \externalLink{rtfm}{http://rtfm.fauchet.ovh/} with template
+\end{itemize}
+
+\begin{CodeBlock}{console}
+go test -cover
+\end{CodeBlock}
+
+\levelTwoTitle{Level 2 SubTITLE bis}
+
+\begin{CodeBlock}{golang}
+func readingFromStdin(scanner *bufio.Scanner) []string {
+	inputs := []string{}
+	for scanner.Scan() {
+		inputs = append(inputs, scanner.Text())
+	}
+	if err := scanner.Err(); err != nil {
+		fmt.Println("error while reading stdin:", err)
+	}
+	return inputs
+}
+\end{CodeBlock}
+
+Lorem \textit{ipsum} dolor sit amet, consectetuer adipiscing elit. Integer diam augue, egestas quis, aliquam ut, venenatis ut, quam. \CodeInline{Quisque} ut augue. Integer non neque a lectus venenatis fermentum. Morbi quis eros nec elit molestie vehicula. Integer nunc lacus, sodales posuere, rutrum quis, blandit at, mi. Vivamus imperdiet wisi vel mauris. Morbi mattis ante non metus. Sed turpis dui, fermentum ut, aliquam eget, vulputate ullamcorper, pede. Nam non dolor. Etiam lobortis, urna id bibendum convallis, ligula augue auctor eros, a dictum sapien mi a tellus. Proin vel justo. Nunc malesuada turpis a sapien.
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer diam augue, egestas quis, aliquam ut, venenatis ut, quam. Quisque ut augue. Integer non neque a lectus venenatis fermentum. Morbi quis eros nec elit molestie vehicula. Integer nunc lacus, sodales posuere, rutrum quis, blandit at, mi. Vivamus imperdiet wisi vel mauris. Morbi mattis ante non metus. Sed turpis dui, fermentum ut, aliquam eget, vulputate ullamcorper, pede. Nam non dolor. Etiam lobortis, urna id bibendum convallis, ligula augue auctor eros, a dictum sapien mi a tellus. Proin vel justo. Nunc malesuada turpis a sapien.
+
+\levelOneTitle{Second paraph : question about plus sign ?}
+
+Lorem ipsum dolor sit amet, \textbf{consectetuer} adipiscing elit. Integer diam augue, egestas quis, aliquam ut, venenatis ut, quam. Quisque ut augue. Integer non neque a lectus venenatis fermentum. Morbi quis eros nec elit molestie vehicula. Integer nunc lacus, sodales posuere, rutrum quis, blandit at, mi. Vivamus imperdiet wisi vel mauris. Morbi mattis ante non metus. Sed turpis dui, fermentum ut, aliquam eget, vulputate ullamcorper, pede. Nam non dolor. Etiam lobortis, urna id bibendum convallis, ligula augue auctor eros, a dictum sapien mi a tellus. Proin vel justo. Nunc malesuada turpis a sapien.
+
+\levelTwoTitle{Second level 2 title}
+
+\begin{itemize}
+\item\relax list
+\item\relax listing
+\end{itemize}
+
+\begin{Question}
+About questions+?
+\end{Question}
+
+\levelThreeTitle{level 3 subtitle}
+
+\image{https://gitlab.com/franckf/reference-javascript/-/blob/master/snippets/pwa-basic/icon-512.png}[alternate text]
+
+\begin{Quotation}[citation]
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Integer diam augue, egestas quis, aliquam ut, venenatis ut, quam. Quisque ut augue. Integer non neque a lectus venenatis fermentum. Morbi quis eros nec elit molestie vehicula. Integer nunc lacus, sodales posuere, rutrum quis, blandit at, mi. Vivamus imperdiet wisi vel mauris. Morbi mattis ante non metus. Sed turpis dui, fermentum ut, aliquam eget, vulputate ullamcorper, pede. Nam non dolor. Etiam lobortis, urna id bibendum convallis, ligula augue auctor eros, a dictum sapien mi a tellus. Proin vel justo. Nunc malesuada turpis a sapien.
+\end{Quotation}
+
+\horizontalLine
+
+\end{document}
