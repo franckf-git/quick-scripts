@@ -4,23 +4,14 @@ PATH=$PATH:/usr/sbin" >> /root/.bashrc
 export PATH=$PATH:/usr/sbin
 ############ Repos
 echo "
-# Security updates
-deb http://security.debian.org/ buster/updates main contrib non-free
-deb-src http://security.debian.org/ buster/updates main contrib non-free
+deb http://deb.debian.org/debian/ bullseye main contrib non-free
+deb-src http://deb.debian.org/debian/ bullseye main contrib non-free
 
-## Debian mirror
+deb http://security.debian.org/debian-security bullseye-security main contrib non-free
+deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
 
-# Base repository
-deb https://deb.debian.org/debian buster main contrib non-free
-deb-src https://deb.debian.org/debian buster main contrib non-free
-
-# Stable updates
-deb https://deb.debian.org/debian buster-updates main contrib non-free
-deb-src https://deb.debian.org/debian buster-updates main contrib non-free
-
-# Stable backports
-#deb https://deb.debian.org/debian buster-backports main contrib non-free
-#deb-src https://deb.debian.org/debian buster-backports main contrib non-free
+deb http://deb.debian.org/debian/ bullseye-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free
 " > /etc/apt/sources.list
 echo '
 APT::Install-Recommends "false";
@@ -86,7 +77,7 @@ apt-get install --assume-yes nodejs npm golang
 apt-get install --assume-yes tuned unclutter fonts-firacode
 apt-get install --assume-yes firmware-linux firmware-linux-free firmware-linux-nonfree firmware-iwlwifi
 # if AMD (thinkpad)
-apt-get install --assume-yes xserver-xorg-video-amdgpu
+apt-get install --assume-yes xserver-xorg-video-amdgpu amd64-microcode
 # else
 apt-get install --assume-yes intel-microcode
 
