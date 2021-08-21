@@ -58,6 +58,9 @@ rpm-ostree install ImageMagick
 # systems
 rpm-ostree install fira-code-fonts
 rpm-ostree install tuned
+# code
+rpm-ostree install entr
+rpm-ostree install golang
 # if AMD (thinkpad)
 rpm-ostree install xorg-x11-drv-amdgpu
 
