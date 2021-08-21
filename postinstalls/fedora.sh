@@ -30,37 +30,43 @@ systemctl disable vboxservice.service
 systemctl stop sshd
 systemctl daemon-reload
 ############ Flatpak
-flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install --assumeyes com.github.tchx84.Flatseal
+flatpak install --assumeyes ca.desrt.dconf-editor
+flatpak install --assumeyes io.mpv.Mpv
+flatpak install --assumeyes org.chromium.Chromium
+flatpak install --assumeyes org.keepassxc.KeePassXC
+flatpak install --assumeyes org.freedesktop.Sdk.Extension.golang
+flatpak install --assumeyes com.vscodium.codium
 ############ Install apps
 # rpm fusion
-dnf install --assumeyes https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+rpm-ostree install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-dnf upgrade --assumeyes --refresh
-# basics tools
-dnf install --assumeyes git rsync prename neovim
+rpm-ostree upgrade
 # softwares
-dnf install --assumeyes chromium newsboat urlview keepassxc
+rpm-ostree install prename
+rpm-ostree install neovim
+rpm-ostree install newsboat
 # file manager
-dnf install --assumeyes w3m-img ranger xclip highlight
+rpm-ostree install ranger
+rpm-ostree install highlight
 # medias
-dnf install --assumeyes mpv youtube-dl ffmpeg
-# code
-dnf install --assumeyes nodejs golang
+rpm-ostree install youtube-dl
+rpm-ostree install ffmpeg
+rpm-ostree install ImageMagick
 # systems
-dnf install --assumeyes tuned fira-code-fonts
+rpm-ostree install fira-code-fonts
+rpm-ostree install tuned
 # if AMD (thinkpad)
-dnf install --assumeyes xorg-x11-drv-amdgpu
+rpm-ostree install xorg-x11-drv-amdgpu
 
 # power mangement
 tuned --daemon --profile powersave
 tuned-adm active
 tuned-adm verify
 
-# grub and autologin
+# grub
 sed --in-place 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
-sed --in-place 's/#autologin-user=/autologin-user=whoami/g' /etc/lightdm/lightdm.conf
 
-# to disable wait for workspace login
-# systemctl disable NetworkManager-wait-online.service
