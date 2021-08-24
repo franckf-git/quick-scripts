@@ -32,7 +32,6 @@ systemctl daemon-reload
 ############ Flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --assumeyes com.github.tchx84.Flatseal
-flatpak install --assumeyes ca.desrt.dconf-editor
 flatpak install --assumeyes io.mpv.Mpv
 flatpak install --assumeyes org.chromium.Chromium
 flatpak install --assumeyes org.keepassxc.KeePassXC
@@ -58,6 +57,7 @@ rpm-ostree install ImageMagick
 # systems
 rpm-ostree install fira-code-fonts
 rpm-ostree install tuned
+rpm-ostree install gnome-tweaks
 # code
 rpm-ostree install entr
 rpm-ostree install golang
