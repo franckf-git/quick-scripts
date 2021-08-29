@@ -55,34 +55,52 @@ systemctl disable vboxservice.service
 systemctl stop sshd
 systemctl daemon-reload
 ############ Install apps
-# if minimal install
-# apt-get install --no-install-recommends --assume-yes gnome-core gdm3 network-manager-gnome
-# systemctl set-default graphical.target
 
 apt-get dist-upgrade --assume-yes
 # flatpak
-apt-get install --assume-yes flatpak
+apt install --assume-yes flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-# basics tools
-apt-get install --assume-yes git rsync rename neovim
-# softwares
-apt-get install --assume-yes chromium chromium-sandbox newsboat keepassxc urlview unzip curl
-# window manager
-apt-get install --assume-yes w3m-img ranger highlight
-# medias
-apt-get install --assume-yes mpv # get youtube-dl by github
-# code
-apt-get install --assume-yes nodejs npm golang
-# systems
-apt-get install --assume-yes tuned unclutter fonts-firacode
-apt-get install --assume-yes firmware-linux firmware-linux-free firmware-linux-nonfree firmware-iwlwifi
-# if AMD (thinkpad)
-apt-get install --assume-yes xserver-xorg-video-amdgpu amd64-microcode
-# else
-apt-get install --assume-yes intel-microcode
+flatpak install --assumeyes com.github.tchx84.Flatseal
+flatpak install --assumeyes org.chromium.Chromium
+flatpak install --assumeyes org.keepassxc.KeePassXC
+flatpak install --assumeyes org.freedesktop.Sdk.Extension.golang
+flatpak install --assumeyes com.vscodium.codium
 
-apt-get autoremove --assume-yes
-apt-get autoclean --assume-yes
+# basics tools
+apt install --assume-yes git
+apt install --assume-yes rsync
+# softwares
+apt install --assume-yes rename
+apt install --assume-yes neovim
+apt install --assume-yes newsboat
+# file manager
+apt install --assume-yes ranger
+apt install --assume-yes highlight
+# medias
+apt install --assume-yes mpv
+apt install --assume-yes youtube-dl
+apt install --assume-yes ffmpeg
+apt install --assume-yes ImageMagick
+# systems
+apt install --assume-yes fira-code-fonts
+apt install --assume-yes tuned
+apt install --assume-yes gnome-tweaks
+# code
+apt install --assume-yes entr
+apt install --assume-yes golang
+# firmware
+apt install --assume-yes firmware-linux
+apt install --assume-yes firmware-linux-free
+apt install --assume-yes firmware-linux-nonfree
+apt install --assume-yes firmware-iwlwifi
+# if AMD (thinkpad)
+apt install --assume-yes xserver-xorg-video-amdgpu
+apt install --assume-yes amd64-microcode
+# else
+apt install --assume-yes intel-microcode
+
+apt autoremove --assume-yes
+apt autoclean --assume-yes
 
 ############ OPTIMIZE
 # GRUB
@@ -116,6 +134,5 @@ tuned-adm verify
 
 # extra security
 dpkg --verify
-apt-get install checksecurity chkrootkit rkhunter
+apt install checksecurity chkrootkit rkhunter
 
-git clone https://gitlab.com/franckf/dotfiles.git
