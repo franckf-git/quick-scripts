@@ -32,37 +32,36 @@ systemctl daemon-reload
 ############ Flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --assumeyes com.github.tchx84.Flatseal
-flatpak install --assumeyes io.mpv.Mpv
 flatpak install --assumeyes org.chromium.Chromium
 flatpak install --assumeyes org.keepassxc.KeePassXC
 flatpak install --assumeyes org.freedesktop.Sdk.Extension.golang
 flatpak install --assumeyes com.vscodium.codium
 ############ Install apps
 # rpm fusion
-rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-rpm-ostree install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf install --assumeyes https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-rpm-ostree upgrade
+dnf upgrade
 # softwares
-rpm-ostree install prename
-rpm-ostree install neovim
-rpm-ostree install newsboat
+dnf install --assumeyes prename
+dnf install --assumeyes neovim
+dnf install --assumeyes newsboat
 # file manager
-rpm-ostree install ranger
-rpm-ostree install highlight
+dnf install --assumeyes ranger
+dnf install --assumeyes highlight
 # medias
-rpm-ostree install youtube-dl
-rpm-ostree install ffmpeg
-rpm-ostree install ImageMagick
+dnf install --assumeyes youtube-dl
+dnf install --assumeyes ffmpeg
+dnf install --assumeyes ImageMagick
 # systems
-rpm-ostree install fira-code-fonts
-rpm-ostree install tuned
-rpm-ostree install gnome-tweaks
+dnf install --assumeyes fira-code-fonts
+dnf install --assumeyes tuned
+dnf install --assumeyes gnome-tweaks
 # code
-rpm-ostree install entr
-rpm-ostree install golang
+dnf install --assumeyes entr
+dnf install --assumeyes golang
 # if AMD (thinkpad)
-rpm-ostree install xorg-x11-drv-amdgpu
+dnf install --assumeyes xorg-x11-drv-amdgpu
 
 # power mangement
 tuned --daemon --profile powersave
