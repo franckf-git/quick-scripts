@@ -50,6 +50,7 @@ dnf install --assumeyes newsboat
 dnf install --assumeyes ranger
 dnf install --assumeyes highlight
 # medias
+dnf install --assumeyes mpv
 dnf install --assumeyes youtube-dl
 dnf install --assumeyes ffmpeg
 dnf install --assumeyes ImageMagick
