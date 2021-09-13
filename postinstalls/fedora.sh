@@ -45,6 +45,7 @@ dnf upgrade
 # softwares
 dnf install --assumeyes prename
 dnf install --assumeyes neovim
+dnf install --assumeyes xclip
 dnf install --assumeyes newsboat
 # file manager
 dnf install --assumeyes ranger
