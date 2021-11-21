@@ -1,8 +1,9 @@
 #! /bin/bash
+# https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/11.1.0+nonfree/amd64/iso-cd/
 echo "
 PATH=$PATH:/usr/sbin" >> /root/.bashrc
 export PATH=$PATH:/usr/sbin
-############ Repos
+############ Repos (no need if firmware ISO)
 echo "
 deb http://deb.debian.org/debian/ bullseye main contrib non-free
 deb-src http://deb.debian.org/debian/ bullseye main contrib non-free
@@ -86,7 +87,6 @@ apt install --assume-yes fira-code-fonts
 apt install --assume-yes tuned
 apt install --assume-yes gnome-tweaks
 # code
-apt install --assume-yes entr
 apt install --assume-yes golang
 # firmware
 apt install --assume-yes firmware-linux
@@ -99,40 +99,13 @@ apt install --assume-yes amd64-microcode
 # else
 apt install --assume-yes intel-microcode
 
+apt install --assume-yes gdm3
+apt install --assume-yes gnome-terminal
+systemctl set-default graphical.target
+
 apt autoremove --assume-yes
 apt autoclean --assume-yes
 
-############ OPTIMIZE
 # GRUB
 sed --in-place 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 update-grub
-# SSD
-sed --in-place 's/defaults/defaults,discard/g' /etc/fstab
-# laptop mode
-echo "
-vm.laptop_mode = 5 " >> /etc/sysctl.conf
-# lower swap level
-echo "
-vm.swappiness = 10 " >> /etc/sysctl.conf
-# touchpad
-apt-get remove xserver-xorg-input-synaptics
-apt-get install xserver-xorg-input-libinput
-mkdir /etc/X11/xorg.conf.d
-echo 'Section "InputClass"
-        Identifier "libinput touchpad catchall"
-        MatchIsTouchpad "on"
-        MatchDevicePath "/dev/input/event*"
-        Driver "libinput"
-        Option "Tapping" "on"
-EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
-# autologin
-sed --in-place 's/#autologin-user=/autologin-user=user/g' /etc/lightdm/lightdm.conf
-# power mangement
-tuned --daemon --profile powersave
-tuned-adm active
-tuned-adm verify
-
-# extra security
-dpkg --verify
-apt install checksecurity chkrootkit rkhunter
-
