@@ -101,6 +101,7 @@ apt install --assume-yes intel-microcode
 
 apt install --assume-yes gdm3
 apt install --assume-yes gnome-terminal
+apt install --assume-yes gnome-control-center
 systemctl set-default graphical.target
 
 apt autoremove --assume-yes
