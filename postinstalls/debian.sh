@@ -5,14 +5,10 @@ PATH=$PATH:/usr/sbin" >> /root/.bashrc
 export PATH=$PATH:/usr/sbin
 ############ Repos (no need if firmware ISO)
 echo "
-deb http://deb.debian.org/debian/ bullseye main contrib non-free
-deb-src http://deb.debian.org/debian/ bullseye main contrib non-free
-
+deb https://deb.debian.org/debian/ bullseye main contrib non-free
+deb https://deb.debian.org/debian/ bullseye-updates main contrib non-free
 deb http://security.debian.org/debian-security bullseye-security main contrib non-free
-deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
-
-deb http://deb.debian.org/debian/ bullseye-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free
+# deb https://deb.debian.org/debian/ bullseye-backports main contrib non-free
 " > /etc/apt/sources.list
 echo '
 APT::Install-Recommends "false";
