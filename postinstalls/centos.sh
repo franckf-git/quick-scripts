@@ -31,48 +31,23 @@ systemctl disable vboxservice.service
 systemctl stop sshd
 systemctl daemon-reload
 ############ Flatpak
-flatpak remote-add --if-not-exists flathub     https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ############ Install apps
 # epel
-dnf install --assumeyes epel-release
+dnf config-manager --set-enabled crb
+dnf install --assumeyes https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/e/epel-release-9-2.el9.noarch.rpm
+dnf install --assumeyes https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/e/epel-next-release-9-2.el9.noarch.rpm
 # rpm fusion
-dnf install --assumeyes https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %centos).noarch.rpm
-dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %centos).noarch.rpm
-dnf config-manager --enable powertools
+#not ready yet
+#dnf install --assumeyes https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %centos).noarch.rpm
+#dnf install --assumeyes https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %centos).noarch.rpm
 
 # if minimal install
-# dnf install gnome-shell gdm gnome-tweaks nautilus gnome-terminal
+# dnf install --assumeyes gnome-shell gdm gnome-tweaks nautilus gnome-terminal
 # systemctl set-default graphical.target
 
 dnf upgrade --assumeyes --refresh
-# basics tools
-dnf install --assumeyes git rsync neovim #prename
-# softwares
-dnf install --assumeyes keepassxc #chromium newsboat urlview
-# file manager
-dnf install --assumeyes w3m-img ranger xclip highlight
-# medias
-dnf install --assumeyes mpv youtube-dl ffmpeg
-# code
-dnf install --assumeyes nodejs golang
-# systems
-dnf install --assumeyes tuned fira-code-fonts
-# if AMD (thinkpad)
-#dnf install --assumeyes xorg-x11-drv-amdgpu
-
-# power mangement
-tuned --daemon --profile powersave
-tuned-adm active
-tuned-adm verify
 
 # grub
 sed --in-place 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
-
-# to disable wait for workspace login
-# systemctl disable NetworkManager-wait-online.service
-
-############ Newsboat
-#podman run --name=newsboat --detach --interactive --tty --volume ~/newsboat:/root:Z registry.fedoraproject.org/f34/fedora-toolbox
-#podman exec --interactive --tty newsboat newsboat
-# to fix : urlview dl in ~/ ; scripts site>rss anim/scan
