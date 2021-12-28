@@ -31,6 +31,7 @@ flatpak install --assumeyes org.chromium.Chromium
 flatpak install --assumeyes org.keepassxc.KeePassXC
 flatpak install --assumeyes org.freedesktop.Sdk.Extension.golang
 flatpak install --assumeyes com.vscodium.codium
+flatpak install --assumeyes io.mpv.Mpv
 # grub
 sed --in-place 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg

@@ -13,6 +13,9 @@ dnf install --assumeyes prename
 dnf install --assumeyes neovim
 dnf install --assumeyes xclip
 dnf install --assumeyes newsboat
+dnf install --assumeyes epiphany
+dnf install --assumeyes feh
+dnf install --assumeyes evince
 # file manager
 dnf install --assumeyes ranger
 dnf install --assumeyes highlight
@@ -23,5 +26,9 @@ dnf install --assumeyes ffmpeg
 dnf install --assumeyes ImageMagick
 # code
 dnf install --assumeyes golang
-# if AMD (thinkpad) ??
-#dnf install --assumeyes xorg-x11-drv-amdgpu
+
+# fonts
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts
+wget https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip
+unzip Fira_Code_v6.2.zip
