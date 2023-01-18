@@ -31,7 +31,16 @@ flatpak install --assumeyes org.chromium.Chromium
 flatpak install --assumeyes org.keepassxc.KeePassXC
 flatpak install --assumeyes org.freedesktop.Sdk.Extension.golang
 flatpak install --assumeyes com.vscodium.codium
-flatpak install --assumeyes io.mpv.Mpv
+
 # grub
 sed --in-place 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+
+############ Install apps
+# rpm fusion
+rpm-ostree install --assumeyes https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# reboot
+
+# needed
+rpm-ostree install --assumeyes prename neovim xclip newsboat ranger mpv yt-dlp golang feh i3 rofi evince
